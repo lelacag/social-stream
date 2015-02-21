@@ -1,0 +1,22 @@
+<a href="<%= "/#{post.user.username}" %>">
+	<figure class="avatar">
+    <%= image_tag(post.user.avatar.url(:thumb), size: "100x100") %>
+  </figure>
+  
+	<span class="post-email"><%= post.user.username %></span>
+</a>
+
+<style>
+  .avatar {
+    position: relative;
+  }
+
+  .avatar::before {
+    border-top: 0;
+    border-right: 50px solid white;
+    border-bottom: 100px solid transparent;
+    border-left: 50px solid white;
+    position: absolute;
+    content: "";
+  }
+</style>

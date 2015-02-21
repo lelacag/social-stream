@@ -1,0 +1,31 @@
+<div class="row col-md-9">
+	<div class="col-md-3">&nbsp;</div>
+	<div class="col-md-6">
+		<div class='well'>
+			<h2><%= @user.username %></h2>
+			<%= image_tag(@user.avatar.url(:thumb)) %>
+			<hr />
+			<%= button_to 'Follow', follow_user_path(user_id: @user), class: 'btn' %>
+			<hr />
+			
+			<div class="row">
+				<div class="col-md-3" style="border: 1px solid black; margin-right: 10px;">
+					<p>
+						<%= @user.follower_count %> followers
+					</p>
+				</div>
+				<div class="col-md-3" style="border: 1px solid grey;">
+					<p>
+						<%= @user.following_count %> follows
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<hr />
+
+<% @user.posts.each do |post| %>
+	<%= render partial: 'partials/post', locals: {post: post}%>
+<% end %>

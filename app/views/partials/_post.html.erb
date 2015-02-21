@@ -1,0 +1,20 @@
+<div class="row col-md-9">
+	<div class="col-md-3">
+		<%= render partial: 'partials/avatar', locals: {post: post} %>
+	</div>
+	<div class="col-md-6">
+		<div class='well'>
+			<h5><%= catch_phrase %> <%= post.subject %></h5>
+			<p class="well"><%= post.body %></p>
+			<%= button_to "Liked #{post.favorite_count} times", post_like_path(post), class: 'btn'%>
+			<div class="row">
+				<div class="col-md-3">
+					<%= link_to "Report post", post_report_path(post), method: 'POST' %>
+				</div>
+				<div class="col-md-3">
+					<%= render_shareable turbolinks: true, buttons: ['twitter', 'facebook'] %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
