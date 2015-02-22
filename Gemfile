@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'pg'
 gem 'devise'
 gem 'inkwell'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -44,7 +45,7 @@ group :development, :test do
   gem 'spring'
   gem 'heroku'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
 end
 
 group :development do
@@ -54,7 +55,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_serve_static_assets'
   gem 'rails_stdout_logging'
 end
