@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id                        :integer          not null, primary key
+#  subject                   :string
+#  user_id                   :integer
+#  body                      :text
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
+#  users_ids_who_favorite_it :text             default("[]")
+#  users_ids_who_comment_it  :text             default("[]")
+#  users_ids_who_reblog_it   :text             default("[]")
+#  censor_approved           :boolean
+#
+
 class Post < ActiveRecord::Base
   belongs_to :user
   has_many :post_reports
