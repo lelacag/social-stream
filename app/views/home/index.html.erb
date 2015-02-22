@@ -1,17 +1,13 @@
-<div class="row col-md-9">
-	<div class="col-md-3">&nbsp;</div>
-
-	<div class="col-md-6">
-
-		<h2><%= catch_phrase %></h2>
-	</div>
+<div id="intro" class="text-center">
+  <h1>Set Phrase</h1>
+  <p>Create your own phrase and create a community around it</p>
+  <%= link_to "Create", new_phrase_path, class: "btn btn-lg btn-default" %>
 </div>
 
-<div class="row">
-	<%= render 'posts/form' %>
+<div id="recent-phrases" class="text-center">
+  <h2>Recent Phrases</h2>
 </div>
-<hr />
 
-<% @posts.each do |post| %>
-	<%= render partial: 'partials/post', locals: {post: post} %>
-<% end %>
+<div id="popular-phrases">
+  <h3>Popular Phrases</h3>
+</div>
