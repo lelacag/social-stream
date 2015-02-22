@@ -2,8 +2,9 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:follow_user]
   
   def index
-    @post = Post.new
-    @posts = Post.approved.reverse
+    # @post = Post.new
+    # @posts = Post.approved.reverse
+    @user = current_user
   end
   
   def profile
