@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :communities
     resources :phrases
   end
+  resources :dashboards
   root 'home#index'
   post 'follow_user' => 'home#follow_user'
   # get '*username' => 'home#profile'
