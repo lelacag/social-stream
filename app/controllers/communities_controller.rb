@@ -1,13 +1,14 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   before_action :set_community, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
+  before_action :set_user, except: :index
 
   # GET /communities
   # GET /communities.json
   def index
     # @user = User.find(params[:user_id])
-    @communities = @user.communities
+    # @communities = @user.communities
+    @communities = Community.all
   end
 
   # GET /communities/1

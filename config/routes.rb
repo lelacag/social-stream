@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'report'
   end
   devise_for :users, controllers: { sessions: "users/sessions" }
+  resources :communities, only: :index
   resources :users do
     resources :dashboards
     resources :communities do

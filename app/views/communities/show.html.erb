@@ -1,4 +1,8 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
-<%= link_to 'Edit', edit_user_community_path %> |
-<%= link_to 'Back', user_communities_path %>
+<h1><%= @community.name %></h1>
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_user_community_path %> |
+  <%= link_to 'Back', user_communities_path %>
+<% end %>
