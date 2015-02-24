@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    dashboards_path
+    user_dashboards_path(resource)
   end
 
   protected

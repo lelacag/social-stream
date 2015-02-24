@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   end
   devise_for :users, controllers: { sessions: "users/sessions" }
   resources :users do
-    resources :communities
-    resources :phrases
+    resources :dashboards
+    resources :communities do
+      resources :phrases
+    end
   end
-  resources :dashboards
   root 'home#index'
   post 'follow_user' => 'home#follow_user'
   # get '*username' => 'home#profile'

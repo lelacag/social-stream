@@ -12,9 +12,10 @@
   <tbody>
     <% @communities.each do |community| %>
       <tr>
-        <td><%= link_to 'Show', community %></td>
-        <td><%= link_to 'Edit', edit_community_path(community) %></td>
-        <td><%= link_to 'Destroy', community, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= community.name %></td>
+        <td><%= link_to 'Show', user_community_path(community.owner_id, community) %></td>
+        <td><%= link_to 'Edit', edit_user_community_path(community.owner_id, community) %></td>
+        <td><%= link_to 'Destroy', user_community_path(community.owner_id, community), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Community', new_user_community_path %>
+<%= link_to 'New Community', new_user_community_path if user_signed_in? %>

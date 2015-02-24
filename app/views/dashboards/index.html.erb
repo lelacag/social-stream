@@ -8,7 +8,8 @@
         <%= render template: "/devise/registrations/edit", locals: { resource: @user } %>
       </div>
       <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-        <p></p>
+        <%= render template: 'communities/index' %>
+        <%#= @communities %>
       </div>
     </div>
   </div>
