@@ -52,6 +52,7 @@ group :development do
   gem 'quiet_assets', github: 'evrone/quiet_assets', branch: 'master'
   gem 'guard-livereload', github: 'guard/guard-livereload', branch: 'master', require: false
   gem 'annotate', github: 'ctran/annotate_models',branch: 'master'
+  gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
 end
 
 group :production do
