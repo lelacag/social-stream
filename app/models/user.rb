@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "50x50#" }, :default_url => "avatar.gif"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  validates :username, presence: true
+  validates :username, uniqueness: true
+
   attr_reader :set_phrase
   
 end

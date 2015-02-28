@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  respond_to :json
+  # respond_to :json
 
   # POST /resource
   def create
@@ -22,7 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       # set_minimum_password_length
-      respond_with resource
+      # respond_with resource
+      render json: resource.errors, status: :unprocessable_entity
       logger.error(@user.errors.full_messages.join("\n"))
     end
   end
