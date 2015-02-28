@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     # @post = Post.new
     # @posts = Post.approved.reverse
-    @user = current_user
+    @communities = Community.limit(8)
   end
   
   def profile

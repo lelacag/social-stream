@@ -1,0 +1,11 @@
+<div id="recent-phrases" class="text-center">
+  <h2>Recent Phrases</h2>
+  <% @communities.each do |community| %>
+    <div>
+      <%= community.name %>
+      <%= community.users.count %>
+      <%= community.posts.count %>
+      <%= link_to("Join", "url") %>
+    </div>
+  <% end %>
+</div>
