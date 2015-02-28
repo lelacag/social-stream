@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :set_community, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, except: :index
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join]
+  before_action :set_community, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_user, except: [:index, :join]
 
   # GET /communities
   # GET /communities.json
@@ -64,6 +64,18 @@ class CommunitiesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to user_communities_url, notice: 'Community was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    begin
+      current_user.join(@community)
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'You joined.' }
+        # format.js { render js: "window.location.href=' " + communities_path + " ' " }
+      end
+    rescue
+      redirect_to :back, alert: 'you are already in this community'
     end
   end
 

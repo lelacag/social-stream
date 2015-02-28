@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'follow_user' => 'home#follow_user'
   # get '*username' => 'home#profile'
+  post 'communities/:id/join' => 'communities#join', as: :join_community
+
 end

@@ -3,9 +3,11 @@
   <% @communities.each do |community| %>
     <div>
       <%= community.name %>
-      <%= community.users.count %>
-      <%= community.posts.count %>
-      <%= link_to("Join", "#") %>
+      Users: <%= community.users.count %>
+      Posts: <%= community.posts.count %>
+      <%= link_to("Join", join_community_path(community), method: :post) %>
+      <%#= current_user.username %>
+
     </div>
   <% end %>
 </div>
