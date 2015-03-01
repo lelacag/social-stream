@@ -5,6 +5,9 @@ class HomeController < ApplicationController
     # @post = Post.new
     # @posts = Post.approved.reverse
     @communities = Community.limit(8)
+    if current_user
+      @community = Community.new
+    end
   end
   
   def profile

@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         # respond_with resource, location: after_sign_up_path_for(resource)
         @community = Community.create :name => params[:set_phrase], :owner_id => resource.id
-        render js: "window.location.href=' " + user_dashboards_path(current_user) + " ' "
+        render js: "window.location.href=' " +  user_community_path(current_user, current_user.communities.last) + " ' "
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!

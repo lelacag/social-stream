@@ -30,7 +30,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
-    @community = Community.create :name => "Community", :owner_id => @user.id
+    @community = Community.create :name => params[:community][:name], :owner_id => @user.id
 
     respond_to do |format|
       if @community.save
