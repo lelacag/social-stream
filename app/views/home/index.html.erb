@@ -8,10 +8,10 @@
             <div class="form-group">
               <%= f.text_field :name, class: "form-control set-phrase", placeholder: "Set Phrase", autofocus: true %>
             </div>
-            <div class="form-group">
-              <%= f.label :upload_image_for_phrase %>
-              <%= f.file_field :image, class: "form-control" %>
-            </div>
+            <!-- <div class="form-group"> -->
+              <%#= f.label :upload_image_for_phrase %>
+              <%#= f.file_field :image, class: "form-control" %>
+            <!-- </div> -->
             <div class="actions">
               <%= f.submit "Create", class: "btn btn-lg btn-default" %>
             </div>
@@ -25,10 +25,10 @@
             <p>Create your own phrase and create a community around it</p>
 
             <div id="user-input" style="display:none;">
-              <div class="form-group">
-                <%= f.label :upload_image_for_phrase %>
-                <%= file_field_tag :image, class: "form-control" %>
-              </div>
+              <!-- <div class="form-group"> -->
+                <%#= f.label :upload_image_for_phrase %>
+                <%#= file_field_tag :image, class: "form-control" %>
+              <!-- </div> -->
 
               <div class="form-group">
                 <!-- <%#= f.label :email %><br /> -->
