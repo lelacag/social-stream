@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :dashboards
   end
-  resources :communities
+  resources :communities do
+    post 'join', on: :member
+  end
   root 'home#index'
-  post 'follow_user' => 'home#follow_user'
+  # post 'follow_user' => 'home#follow_user'
   # get '*username' => 'home#profile'
-  post 'communities/:id/join' => 'communities#join', as: :join_community
-
 end

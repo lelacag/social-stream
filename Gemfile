@@ -33,6 +33,7 @@ gem 'shareable'
 gem 'paperclip', '~> 4.1'
 gem 'bootswatch-rails'
 gem 'puma'
+gem 'rubocop', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

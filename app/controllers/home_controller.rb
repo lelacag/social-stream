@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:follow_user]
-  
+
   def index
     # @post = Post.new
     # @posts = Post.approved.reverse
@@ -9,11 +9,11 @@ class HomeController < ApplicationController
       @community = Community.new
     end
   end
-  
+
   def profile
     @user = User.where(username: params['username']).first
   end
-  
+
   def follow_user
     @follow_user = User.find(params['user_id'])
     begin

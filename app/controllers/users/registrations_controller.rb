@@ -31,7 +31,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
   def create_community
-    @community = Community.create :name => params[:set_phrase], :owner_id => resource.id, :image => params[:image]
+    @community = Community.create name: params[:set_phrase], owner_id: resource.id, image: params[:image]
   end
 end

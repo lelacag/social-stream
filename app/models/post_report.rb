@@ -11,9 +11,9 @@
 
 class PostReport < ActiveRecord::Base
   belongs_to :post
-  
+
   def censor
-    self.post.censor_approved = true
-    self.post.save
+    post.censor_approved = true
+    post.save
   end
 end
