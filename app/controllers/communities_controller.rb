@@ -48,7 +48,7 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to user_community_url(@community.owner_id, @community), notice: 'Community was successfully updated.' }
+        format.html { redirect_to community_url(@community), notice: 'Community was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class CommunitiesController < ApplicationController
   def destroy
     @community.destroy
     respond_to do |format|
-      format.html { redirect_to user_communities_url, notice: 'Community was successfully destroyed.' }
+      format.html { redirect_to communities_url, notice: 'Community was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

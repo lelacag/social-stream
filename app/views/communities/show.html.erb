@@ -1,7 +1,9 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
 <h1><%= @community.name %></h1>
-
+<div class="row">
+<%= image_tag(@community.image.url(:medium)) %>
+</div>
 <% if user_signed_in? %>
   <%= link_to 'Edit', edit_community_path %> |
   <%= link_to 'Back', communities_path %>
