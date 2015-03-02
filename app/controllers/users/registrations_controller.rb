@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # set_minimum_password_length
       # respond_with resource
       render json: resource.errors, status: :unprocessable_entity
-      logger.error(@user.errors.full_messages.join("\n"))
+      logger.error(resource.errors.full_messages.join("\n"))
     end
   end
 
