@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <%= image_tag current_user.avatar.url(:thumb) ? current_user.avatar.url(:thumb) : "avatar.gif", size: "50x50" %> <%= current_user.username %> <span class="caret"></span></a>
+            <%= image_tag current_user.avatar.url(:thumb), size: "50x50" %> <%= current_user.username %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><%= link_to 'Dashboard', user_dashboards_path(current_user) %></li>
               <li><%= link_to 'Settings', edit_user_registration_path %></li>

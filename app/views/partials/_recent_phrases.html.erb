@@ -1,22 +1,26 @@
-<div id="recent-phrases" class="text-center">
+<div id="recent-phrases">
   <h2>Recent Phrases</h2>
   <% @communities.each_slice(4) do |row| %>
     <div class="row mb20">
       <% row.each do |community| %>
         <div class="col-md-3 col-sm-3 col-xs-3">
-          <div class="recent-phrases">
+          <div class="recent-phrases" style="background-image: url('<%= community.image.url %>');">
             <div class="row">
-              <%= community.name %>
+              <%#= community.name %>
             </div>
             <div class="row">
-              <%= link_to("Join", join_community_path(community), method: :post, class: "btn btn-info") %>
+              <div class="pull-right">
+                <%= link_to("Join", join_community_path(community), method: :post, class: "btn btn-info") %>
+              </div>
             </div>
-            <div class="row">
+            <div class="row row-black">
               <div class="col-md-6 col-sm-6 col-xs-6">
                 Users: <%= community.users.count %>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                Posts: <%= community.posts.count %>
+                <div class="pull-right">
+                  Posts: <%= community.posts.count %>
+                </div>
               </div>
             </div>
           </div>
