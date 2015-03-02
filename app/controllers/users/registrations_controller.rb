@@ -1,5 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  skip_before_action :verify_authenticity_token
   # respond_to :json
+
+  after_filter :create_community, only: :create
 
   # POST /resource
   def create
@@ -12,12 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
         # respond_with resource, location: after_sign_up_path_for(resource)
-        @community = Community.create :name => params[:set_phrase], :owner_id => resource.id
-        render js: "window.location.href=' " +  user_community_path(current_user, current_user.communities.last) + " ' "
-      else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        # respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        # render js: "window.location.href=' " +  community_path(1) + " ' "
+        redirect_to communities_path, notice: 'Community was successfully created.'
       end
     else
       clean_up_passwords resource
@@ -26,5 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render json: resource.errors, status: :unprocessable_entity
       logger.error(@user.errors.full_messages.join("\n"))
     end
+  end
+
+  private
+  def create_community
+    @community = Community.create :name => params[:set_phrase], :owner_id => resource.id, :image => params[:image]
   end
 end

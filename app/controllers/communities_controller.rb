@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join]
   before_action :set_community, only: [:show, :edit, :update, :destroy, :join]
-  before_action :set_user, except: [:index, :join]
+  # before_action :set_user, except: [:index, :join]
 
   # GET /communities
   # GET /communities.json
@@ -30,11 +30,11 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
-    @community = Community.create :name => params[:community][:name], :owner_id => @user.id
+    @community = Community.create :name => params[:community][:name], :owner_id => current_user.id, :image => params[:community][:image]
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to user_community_url(@community.owner_id, @community), notice: 'Community was successfully created.' }
+        format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
         format.json { render :show, status: :created, location: @community }
       else
         format.html { render :new }
@@ -90,7 +90,7 @@ class CommunitiesController < ApplicationController
       params.require(:community).permit(:name)
     end
 
-    def set_user
-      @user = User.find(params[:user_id])
-    end
+    # def set_user
+    #   @user = User.find(params[:user_id])
+    # end
 end

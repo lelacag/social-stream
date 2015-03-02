@@ -40,6 +40,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
 
-  attr_reader :set_phrase
+  # attr_reader :set_phrase
   
 end

@@ -4,16 +4,20 @@
       <div id="intro" class="text-center">
 
         <% if user_signed_in? %>
-          <%= form_for(@community, url: user_communities_path(current_user)) do |f| %>
+          <%= form_for(@community, url: communities_path, html: { multipart: true }) do |f| %>
             <div class="form-group">
               <%= f.text_field :name, class: "form-control set-phrase", placeholder: "Set Phrase", autofocus: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :upload_image_for_phrase %>
+              <%= f.file_field :image, class: "form-control" %>
             </div>
             <div class="actions">
               <%= f.submit "Create", class: "btn btn-lg btn-default" %>
             </div>
           <% end %>
         <% else %>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, html: { multipart: true }) do |f| %>
 
             <div class="form-group">
               <%= text_field_tag :set_phrase, nil, class: "form-control set-phrase", placeholder: "Set Phrase", autofocus: true %>
@@ -21,6 +25,11 @@
             <p>Create your own phrase and create a community around it</p>
 
             <div id="user-input" style="display:none;">
+              <div class="form-group">
+                <%= f.label :upload_image_for_phrase %>
+                <%= file_field_tag :image, class: "form-control" %>
+              </div>
+
               <div class="form-group">
                 <!-- <%#= f.label :email %><br /> -->
                 <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
