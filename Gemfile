@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0.rc3'
@@ -54,6 +54,7 @@ group :development do
   gem 'guard-livereload', github: 'guard/guard-livereload', branch: 'master', require: false
   gem 'annotate', github: 'ctran/annotate_models',branch: 'master'
   gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
+  gem 'capistrano', '~> 3.3.0'
 end
 
 group :production do
