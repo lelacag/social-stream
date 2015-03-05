@@ -53,3 +53,20 @@ body {
   width: 79%;
   margin-bottom: 10px;
 }
+
+figure {
+  margin: 0;
+}
+
+.triangle {
+  position: relative;
+}
+
+.triangle::before {
+  border-top: 0;
+  border-right: 25px solid white;
+  border-bottom: 50px solid transparent;
+  border-left: 25px solid white;
+  position: absolute;
+  content: "";
+}
