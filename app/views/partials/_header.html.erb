@@ -10,7 +10,7 @@
       <%# if user_signed_in? %>
         <%#= link_to "Set Phrase", user_dashboards_path(current_user), class: "navbar-brand" %>
       <%# else %>
-        <a class="navbar-brand" href="/">Set Phrase</a>
+        <a class="navbar-brand" href="/"><%= image_tag("logo.jpg") %></a>
       <%# end %>
     </div>
     <div id="navbar" class="collapse navbar-collapse" >
