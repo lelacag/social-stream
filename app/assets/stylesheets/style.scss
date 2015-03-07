@@ -3,6 +3,7 @@
 body {
   background: #fff;
   font-family: 'Noticia Text', serif;
+  margin-top: 5px;
 }
 
 .set-phrase {
@@ -69,4 +70,17 @@ figure {
   border-left: 25px solid white;
   position: absolute;
   content: "";
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.nopadding {
+ padding: 0 !important;
+ margin: 0 !important;
+}
+
+.ml-20 {
+  margin-left: 20px;
 }

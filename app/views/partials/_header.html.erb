@@ -16,20 +16,26 @@
     <div id="navbar" class="collapse navbar-collapse" >
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <figure class="triangle">
+          <div class="row">
+            <div class="col-md-6 nopadding">
+              <figure class="triangle ml-20">
                 <%= image_tag current_user.avatar.url(:thumb), size: "50x50" %>
               </figure>
-              <%= current_user.username %> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'Dashboard', user_dashboards_path(current_user) %></li>
-              <li><%= link_to 'Settings', edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete  %></li>
-            </ul>
-          </li>
+            </div>
+            <div class="col-md-6 nopadding">
+              <li class="dropdown mt-30">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <%= current_user.username %><!--  <span class="caret"></span> -->
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><%= link_to 'Dashboard', user_dashboards_path(current_user) %></li>
+                  <li><%= link_to 'Settings', edit_user_registration_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete  %></li>
+                </ul>
+              </li>
+            </div>
+          </div>
         <% else %>
           <li><%= link_to 'Login', new_user_session_path %></li>
           <li><%= link_to 'Sign up', new_user_registration_path %></li>
