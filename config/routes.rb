@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     post 'like'
     post 'report'
   end
-  devise_for :users, controllers: { sessions: "users/sessions",
-                                    registrations: "users/registrations" }
+  devise_for :users, controllers: { sessions: 'users/sessions',
+                                    registrations: 'users/registrations' }
   resources :users do
     resources :dashboards
   end
