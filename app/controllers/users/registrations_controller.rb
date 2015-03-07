@@ -35,4 +35,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_community
     @community = Community.create name: params[:set_phrase], owner_id: resource.id, image: params[:image]
   end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 end
