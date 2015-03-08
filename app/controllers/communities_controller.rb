@@ -76,7 +76,8 @@ class CommunitiesController < ApplicationController
         format.json
         # format.js { render js: "window.location.href=' " + communities_path + " ' " }
       else
-        format.json { render json: [], status: :unauthorized }
+        format.html { redirect_to root_path, alert: 'unauthorized' }
+        # format.json { render json: [], status: :unauthorized }
       end
     end
   rescue
