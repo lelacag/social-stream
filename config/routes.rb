@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     resources :dashboards
   end
   resources :communities do
-    post 'join', on: :member
+    get 'join', on: :member
+    get 'leave', on: :member
   end
   root 'home#index'
   # post 'follow_user' => 'home#follow_user'

@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join]
-  before_action :set_community, only: [:show, :edit, :update, :destroy, :join]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join, :leave]
+  before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
   # before_action :set_user, except: [:index, :join]
 
   # GET /communities
@@ -68,13 +68,27 @@ class CommunitiesController < ApplicationController
   end
 
   def join
-    current_user.join(@community)
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'You joined.' }
-      # format.js { render js: "window.location.href=' " + communities_path + " ' " }
+      if current_user
+        current_user.join(@community)
+        # format.html { redirect_to root_path, notice: 'You joined.' }
+        format.js
+        format.json
+        # format.js { render js: "window.location.href=' " + communities_path + " ' " }
+      else
+        format.json { render json: [], status: :unauthorized }
+      end
     end
   rescue
     redirect_to :back, alert: 'you are already in this community'
+  end
+
+  def leave
+    respond_to do |format|
+      current_user.leave(@community)
+      format.js
+      format.json
+    end
   end
 
   private

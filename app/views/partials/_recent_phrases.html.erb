@@ -8,9 +8,9 @@
             <div class="recent-phrases" style="background-image: url('<%= asset_path community.image.url(:thumb) %>');">
               <div class="pull-right">
                 <% if current_user && community.user_ids.include?(current_user.id) %>
-                  <%= link_to("Member", community_path(community), class: "btn btn-success") %>
+                  <%= link_to("Leave", leave_community_path(community), remote: true, id: "community_#{community.id}", class: "btn btn-success") %>
                 <% else %>
-                  <%= link_to("Join", join_community_path(community), method: :post, remote: true, id: "community_#{community.id}", class: "btn btn-info") %>
+                  <%= link_to("Join", join_community_path(community), remote: true, id: "community_#{community.id}", class: "btn btn-info") %>
                 <% end %>
               </div>
               <div class="bottom-align">
