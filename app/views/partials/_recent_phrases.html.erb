@@ -8,7 +8,7 @@
             <div class="recent-phrases" style="background-image: url('<%= asset_path community.image.url(:thumb) %>');">
               <div class="pull-right">
                 <% if current_user && community.owner_id == current_user.id %>
-                  <%= link_to("Owner", community_path(community), id: "community_#{community.id}", class: "btn btn-success") %>
+                  <%= link_to("Owner", community_path(community), id: "community_#{community.id}", class: "btn btn-primary") %>
                 <% elsif current_user && community.user_ids.include?(current_user.id) %>
                   <%= link_to("Leave", leave_community_path(community), remote: true, id: "community_#{community.id}", class: "btn btn-success") %>
                 <% else %>
