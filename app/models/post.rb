@@ -20,5 +20,7 @@ class Post < ActiveRecord::Base
   has_many :post_reports
   acts_as_inkwell_post
 
+  validates :subject, :body, presence: true
+
   scope :approved, -> { where(censor_approved: nil) }
 end

@@ -1,10 +1,30 @@
 <!-- <p id="notice"><%#= notice %></p> -->
 
-<h1><%= @community.name %></h1>
-<div class="row">
-<%= image_tag(@community.image.url(:medium)) %>
-</div>
+<h1 class="text-center">{<%= @community.name %>}</h1>
+<!-- <div class="row"> -->
+<%#= image_tag(@community.image.url(:medium)) %>
+<!-- </div> -->
 <% if user_signed_in? && @community.owner_id == current_user.id %>
   <%= link_to 'Edit', edit_community_path %> |
   <%= link_to 'Back', communities_path %>
+<% end %>
+
+<%= form_for @post do |f|  %>
+
+  <div class="form-group">
+    <%= f.text_field :subject, class: "form-control", placeholder: "Text Line"  %>
+    <!-- <input type="text" class="form-control" placeholder="Text Line"> -->
+  </div>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control", rows: "7", placeholder: "Text Box"  %>
+    <!-- <textarea class="form-control" rows="7" placeholder="Text Box"></textarea> -->
+  </div>
+
+  <%= f.submit 'Send', class: "btn btn-primary pull-right" %>
+
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.subject %>
+  <%= post.body %>
 <% end %>

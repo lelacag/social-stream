@@ -3,13 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:like, :report]
 
   def create
-    if user_signed_in?
-      @post = Post.new(post_params.merge!(user_id: current_user.id))
-      @post.save
-      redirect_to :root
-    else
-      redirect_to :new_user_registration, flash: { post_params: post_params }
-    end
+    # if user_signed_in?
+    #   @post = Post.new(post_params.merge!(user_id: current_user.id))
+    #   @post.save
+    #   redirect_to :root
+    # else
+    #   redirect_to :new_user_registration, flash: { post_params: post_params }
+    # end
   end
 
   def like
