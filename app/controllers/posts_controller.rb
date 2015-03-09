@@ -1,15 +1,21 @@
 class PostsController < ApplicationController
   respond_to :html
   before_action :authenticate_user!, only: [:like, :report]
+  after_filter :send_post_to_community, only: :create
 
   def create
-    # if user_signed_in?
-    #   @post = Post.new(post_params.merge!(user_id: current_user.id))
-    #   @post.save
-    #   redirect_to :root
-    # else
-    #   redirect_to :new_user_registration, flash: { post_params: post_params }
-    # end
+    @community = Community.find(params[:community_id])
+    @post = current_user.posts.new(post_params)
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to community_url(@community), notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def like
@@ -26,6 +32,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:subject, :body, :catch_phrase)
+    params.require(:post).permit(:subject, :body)
+  end
+
+  def send_post_to_community
+    current_user.send_post_to_community(post: @post, to_community: @community)
   end
 end

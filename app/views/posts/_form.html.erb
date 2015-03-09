@@ -1,32 +1,26 @@
-<div class="row col-md-9">
-	<div class="col-md-3">&nbsp;</div>
-	
-	<div class="col-md-6">
-		<%= form_for(@post) do |f| %>
-		  <% if @post.errors.any? %>
-		    <div id="error_explanation">
-		      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for(@post, url: community_posts_path(@community)) do |f| %>
+	<% if @post.errors.any? %>
+		<div id="error_explanation">
+			<!-- <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2> -->
 
-		      <ul>
-		      <% @post.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-		  <% end %>
+			<ul>
+			<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-		  <div class="field">
-		    <%= f.label :subject %><br>
-		    <%= f.text_field :subject %>
-		  </div>
-		
-		  <div class="field">
-		    <%= f.label :body %><br>
-		    <%= f.text_area :body, rows: 3 %>
-		  </div>
-		  <div class="actions">
-		    <%= f.submit class: 'btn' %>
-		  </div>
-		<% end %>
+	<div class="form-group">
+		<%#= f.label :subject %><br>
+		<%= f.text_field :subject, class: "form-control", placeholder: "Subject"  %>
 	</div>
-</div>
+
+	<div class="form-group">
+		<%#= f.label :body %><br>
+		<%= f.text_area :body, class: "form-control", rows: "7", placeholder: "Body" %>
+	</div>
+	<div class="actions">
+		<%= f.submit 'Send', class: "btn btn-primary pull-right" %>
+	</div>
+<% end %>
