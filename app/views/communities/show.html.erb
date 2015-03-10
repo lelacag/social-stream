@@ -23,7 +23,7 @@
 </br>
 
 <% @posts.each do |post| %>
-  <h2><%= post.subject %></h2>
+  <h2>{<%= @community.name %>} <%= post.subject %></h2>
 
   <%= post.body %>
 <% end %>
