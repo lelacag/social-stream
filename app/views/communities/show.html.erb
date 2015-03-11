@@ -3,7 +3,7 @@
 <div class="text-center">
   <h1>{<%= @community.name %>}</h1>
 
-  <% unless @community.user_ids.include?(current_user.id)  %>
+  <% unless @community.user_ids.include?(current_user) || @community.owner_id == current_user.id %>
     <h3>If you want to post, please join</h3>
     <%= link_to("Join", join_community_path(@community), id: "community_#{@community.id}", class: "btn btn-info") %>
   <% end %>
@@ -18,7 +18,7 @@
 <%#= image_tag(@community.image.url(:medium)) %>
 <!-- </div> -->
 
-<%= render 'posts/form' if @community.user_ids.include?(current_user.id) %>
+<%= render 'posts/form' if @community.user_ids.include?(current_user) || @community.owner_id == current_user.id %>
 
 </br>
 
