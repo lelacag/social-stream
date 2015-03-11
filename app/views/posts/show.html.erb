@@ -1,0 +1,3 @@
+<h2><%= @community.name %> <%= @post.subject %></h2>
+<%= @post.body %>
+<%= render_shareable :url=> community_post_path(@community, @post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, @post)}, :buttons=> ['twitter', 'facebook'] %>

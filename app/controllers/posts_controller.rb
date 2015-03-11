@@ -18,6 +18,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @community = Community.find(params[:community_id])
+    @post = Post.find(params[:id])
+  end
+
   def like
     post = Post.find(params['post_id'])
     current_user.favorite(post)

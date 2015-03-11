@@ -23,7 +23,10 @@
 </br>
 
 <% @posts.each do |post| %>
-  <h2>{<%= @community.name %>} <%= post.subject %></h2>
+  <%= link_to community_post_path(@community, post) do %>
+    <h2><%= @community.name %> <%= post.subject %></h2>
+  <% end %>
 
   <%= post.body %>
+  <%= render_shareable :url=> community_post_path(@community, post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, post)}, :buttons=> ['twitter', 'facebook'] %>
 <% end %>

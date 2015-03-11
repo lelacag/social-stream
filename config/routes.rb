@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :dashboards
   end
   resources :communities do
-    resources :posts, only: [:new, :create]
+    resources :posts, only: [:new, :create, :show]
     get 'join', on: :member
     get 'leave', on: :member
   end
