@@ -2,6 +2,7 @@
 
 <div class="text-center">
   <h1>{<%= @community.name %>}</h1>
+  <h3><%= @community.posts.count %> Phrases</h3>
 
   <% unless @community.user_ids.include?(current_user.id) || @community.owner_id == current_user.id %>
     <h3>If you want to post, please join</h3>
