@@ -23,10 +23,21 @@
 </br>
 
 <% @posts.each do |post| %>
-  <%= link_to community_post_path(@community, post) do %>
-    <h2><%= @community.name %> <%= post.subject %></h2>
-  <% end %>
-
-  <%= post.body %>
-  <%= render_shareable :url=> community_post_path(@community, post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, post)}, :buttons=> ['twitter', 'facebook'] %>
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <figure class="triangle pull-right pt-70">
+        <%= image_tag post.user.avatar.url(:thumb), size: "50x50" %>
+        <%= post.user.username %>
+      </figure>
+    </div>
+    <div class="col-md-10">
+        <%= link_to community_post_path(@community, post) do %>
+      <h2><%= @community.name %> <%= post.subject %></h2>
+    <% end %>
+      <%= post.body %>
+      <%= render_shareable :url=> community_post_path(@community, post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, post)}, :buttons=> ['twitter', 'facebook'] %>
+    </div>
+  </div>
 <% end %>
