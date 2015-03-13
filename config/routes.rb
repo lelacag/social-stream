@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :show]
     get 'join', on: :member
     get 'leave', on: :member
+    resources :users
   end
   root 'home#index'
   # post 'follow_user' => 'home#follow_user'
