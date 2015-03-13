@@ -83,12 +83,13 @@ class CommunitiesController < ApplicationController
       end
     end
   rescue
-    redirect_to :back, alert: 'you are already in this community'
+    redirect_to :back, notice: 'you are already in this community'
   end
 
   def leave
     respond_to do |format|
       current_user.leave(@community)
+      format.html { redirect_to :back, notice: "you left this community" }
       format.js
       format.json
     end

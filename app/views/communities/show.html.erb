@@ -3,11 +3,11 @@
 <div class="text-center">
   <h1>{<%= @community.name %>}</h1>
 
-  <% if current_user %>
-    <% unless @community.user_ids.include?(current_user.id) || @community.owner_id == current_user.id %>
-      <h3>If you want to post, please join</h3>
-      <%= link_to("Join", join_community_path(@community), id: "community_#{@community.id}", class: "btn btn-info") %>
-    <% end %>
+  <% unless current_user && @community.user_ids.include?(current_user.id) || current_user && @community.owner_id == current_user.id %>
+    <h3>If you want to post, please join</h3>
+    <%= link_to("Join", join_community_path(@community), id: "community_#{@community.id}", class: "btn btn-info") %>
+  <% else %>
+    <%= link_to("Leave", leave_community_path(@community), id: "community_#{@community.id}", class: "btn btn-success") %>
   <% end %>
 
   <h5><%= link_to @community.users.count.to_s + " Users", community_users_path(@community) %></h5>
@@ -23,7 +23,7 @@
 <!-- </div> -->
 
 <% if current_user %>
-  <%= render 'posts/form' if @community.user_ids.include?(current_user.id) || @community.owner_id == current_user.id %>
+  <%= render 'posts/form' if current_user && @community.user_ids.include?(current_user.id) || current_user && @community.owner_id == current_user.id %>
 <% end %>
 
 </br>
