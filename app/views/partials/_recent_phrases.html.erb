@@ -7,13 +7,17 @@
           <div class="col-md-3 col-sm-3 col-xs-3">
             <!-- <div class="recent-phrases" style="background-image: url('<%#= asset_path community.image.url(:thumb) %>');"> -->
             <%= link_to community_path(community) do %>
-            <%= image_tag community.image.url(:thumb) %>
+              <% if community.image.exists? %>
+                <%= image_tag community.image.url(:thumb) %>
+              <% else %>
+                <%= image_tag 'no_image.png' %>
+              <% end %>
               <!-- <div class="pull-left"> -->
                 <%#= link_to("Show", community_path(community), class: "btn btn-default") %>
               <!-- </div> -->
               <div class="pull-right">
                 <% if current_user && community.owner_id == current_user.id %>
-                  <%= link_to("Owner", community_path(community), id: "community_#{community.id}", class: "btn btn-primary") %>
+                  <%= link_to("Owner", community_path(community), id: "community_#{community.id}", class: "btn btn-primary owner-button") %>
                 <% elsif current_user && community.user_ids.include?(current_user.id) %>
                   <%= link_to("Leave", leave_community_path(community), remote: true, id: "community_#{community.id}", class: "btn btn-success leave-button") %>
                 <% else %>
