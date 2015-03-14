@@ -1,1 +1,1 @@
-$('#community_<%= @community.id %>').replaceWith('<%= link_to "Leave", leave_community_path(@community), remote: true, id: "community_#{@community.id}", class: "btn btn-success" %>');
+$('#community_<%= @community.id %>').replaceWith('<%= link_to "Leave", leave_community_path(@community), remote: true, id: "community_#{@community.id}", class: "btn btn-success leave-button" %>');
