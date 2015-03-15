@@ -34,6 +34,7 @@ gem 'paperclip', '~> 4.1'
 gem 'bootswatch-rails'
 gem 'puma'
 gem 'rubocop', require: false
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

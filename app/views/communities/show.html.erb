@@ -39,11 +39,19 @@
       </figure>
     </div>
     <div class="col-md-10">
-        <%= link_to community_post_path(@community, post) do %>
-      <h2><%= @community.name %> <%= post.subject %></h2>
-    <% end %>
-      <%= post.body %>
-      <%= render_shareable :url=> community_post_path(@community, post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, post)}, :buttons=> ['twitter', 'facebook'] %>
+      <%= link_to community_post_path(@community, post) do %>
+        <h2><%= @community.name %> <%= post.subject %></h2>
+      <% end %>
+      <div>
+        <%= post.body %>
+      </div>
+      <div>
+        <%= link_to post.votes_for.first && post.votes_for.first.voter_id == current_user.id ? '#' : liked_by_community_post_path(@community, post), remote: true do %>
+          <%= image_tag('like.png', size: '30x30') %>
+        <% end %>
+        Liked <span id="post_like_<%= post.id %>"><%= post.votes_for.count %></span>
+      </div>
+      <%#= render_shareable :url=> community_post_path(@community, post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, post)}, :buttons=> ['twitter', 'facebook'] %>
     </div>
   </div>
 <% end %>

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   respond_to :html
   before_action :authenticate_user!, only: [:like, :report]
+  before_action :set_post, only: [:show, :liked_by]
   after_filter :send_post_to_community, only: :create
 
   def create
@@ -20,13 +21,21 @@ class PostsController < ApplicationController
 
   def show
     @community = Community.find(params[:community_id])
-    @post = Post.find(params[:id])
   end
 
-  def like
-    post = Post.find(params['post_id'])
-    current_user.favorite(post)
-    redirect_to :root
+  # def like
+  #   post = Post.find(params['post_id'])
+  #   current_user.favorite(post)
+  #   redirect_to :root
+  # end
+
+  def liked_by
+    respond_to do |format|
+      @post.liked_by current_user
+      # format.html { redirect_to :back, notice: "you liked" }
+      format.js
+      format.json
+    end
   end
 
   def report
@@ -35,6 +44,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:subject, :body)

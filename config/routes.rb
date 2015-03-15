@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :dashboards
   end
   resources :communities do
-    resources :posts, only: [:new, :create, :show]
+    resources :posts, only: [:new, :create, :show] do
+      get 'liked_by', on: :member
+    end
     get 'join', on: :member
     get 'leave', on: :member
     resources :users
