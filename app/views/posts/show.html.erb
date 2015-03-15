@@ -1,3 +1,9 @@
 <h2><%= @community.name %> <%= @post.subject %></h2>
 <%= @post.body %>
-<%= render_shareable :url=> community_post_path(@community, @post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, @post)}, :buttons=> ['twitter', 'facebook'] %>
+<div>
+  <%= link_to @post.votes_for.first && @post.votes_for.collect(&:voter_id).include?(current_user.id) ? '#' : liked_by_community_post_path(@community, @post), remote: true do %>
+    <%= image_tag('like.png', size: '30x30') %>
+  <% end %>
+  Liked <span id="post_like_<%= @post.id %>"><%= @post.votes_for.count %></span>
+</div>
+<%#= render_shareable :url=> community_post_path(@community, @post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, @post)}, :buttons=> ['twitter', 'facebook'] %>
