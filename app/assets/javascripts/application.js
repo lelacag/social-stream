@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require community
 //= require home
 //= require form
-//= require community
