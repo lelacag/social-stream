@@ -31,7 +31,7 @@
 <% @posts.each do |post| %>
   <div class="row">
   </div>
-  <div class="row">
+  <div class="row" id="post_<%= post.id %>">
     <div class="col-md-2">
       <figure class="triangle pull-right pt-70">
         <%= image_tag post.user.avatar.url(:thumb), size: "50x50" %>
@@ -59,7 +59,7 @@
           Liked <span id="post_like_<%= post.id %>"><%= post.votes_for.count %></span>
         </div>
         <div class="col-md-6">
-          <%= link_to '#', remote: true do %>
+          <%= link_to report_community_post_path(@community, post), remote: true do %>
             <%= image_tag('report.png', size: '30x30') %>
           <% end %>
           Report

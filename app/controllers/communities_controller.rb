@@ -15,7 +15,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1.json
   def show
     @post = @community.posts.new
-    @posts = @community.posts.order('created_at DESC')
+    @posts = @community.posts.order('created_at DESC').not_reported
   end
 
   # GET /communities/new

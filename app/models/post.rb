@@ -24,4 +24,5 @@ class Post < ActiveRecord::Base
   validates :subject, :body, presence: true
 
   scope :approved, -> { where(censor_approved: nil) }
+  scope :not_reported, -> { where(report: false) }
 end

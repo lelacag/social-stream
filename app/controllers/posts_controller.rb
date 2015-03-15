@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   respond_to :html
   before_action :authenticate_user!, only: [:like, :report]
-  before_action :set_post, only: [:show, :liked_by]
+  before_action :set_post, only: [:show, :liked_by, :report]
   after_filter :send_post_to_community, only: :create
 
   def create
@@ -39,9 +39,17 @@ class PostsController < ApplicationController
   end
 
   def report
-    post_report = PostReport.create(user_id: current_user.id, post_id: params['post_id'])
-    redirect_to :root, notice: 'Post reported'
+    respond_to do |format|
+      @post.update_attribute(:report, true)
+      format.js
+      format.json
+    end
   end
+
+  # def report
+  #   post_report = PostReport.create(user_id: current_user.id, post_id: params['post_id'])
+  #   redirect_to :root, notice: 'Post reported'
+  # end
 
   private
 
