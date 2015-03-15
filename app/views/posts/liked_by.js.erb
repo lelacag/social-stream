@@ -1,2 +1,2 @@
 $('#post_like_<%= @post.id %>').text(parseInt($('#post_like_<%= @post.id %>').text()) + 1);
-$('#post_like_<%= @post.id %>').prev().attr('href', '#');
+$('#post_like_<%= @post.id %>').prev().replaceWith('<%= image_tag("like.png", size: "30x30") %>');

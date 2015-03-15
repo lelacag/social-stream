@@ -47,8 +47,14 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-          <%= link_to post.votes_for.first && current_user && post.votes_for.collect(&:voter_id).include?(current_user.id) ? '#' : liked_by_community_post_path(@community, post), remote: true do %>
-            <%= image_tag('like.png', size: '30x30') %>
+          <% if current_user && !post.votes_for.collect(&:voter_id).include?(current_user.id) %>
+            <%= link_to liked_by_community_post_path(@community, post), remote: true do %>
+              <%= image_tag('like.png', size: '30x30') %>
+            <% end %>
+          <% else %>
+            <%#= link_to '#' do %>
+              <%= image_tag('like.png', size: '30x30') %>
+            <%# end %>
           <% end %>
           Liked <span id="post_like_<%= post.id %>"><%= post.votes_for.count %></span>
         </div>
