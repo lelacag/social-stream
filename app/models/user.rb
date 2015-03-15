@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :communities, dependent: :destroy
   has_many :posts
   has_many :post_reports
   acts_as_inkwell_user
@@ -40,5 +41,4 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
 
-  # attr_reader :set_phrase
 end
