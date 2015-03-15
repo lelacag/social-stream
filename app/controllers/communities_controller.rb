@@ -36,10 +36,12 @@ class CommunitiesController < ApplicationController
 
     respond_to do |format|
       if @community.save
-        format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
+        # format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
+        format.js   { render js: "window.location.href='"+community_path(@community)+"'" }
         format.json { render :show, status: :created, location: @community }
       else
-        format.html { render :new }
+        # format.html { render :new }
+        # format.js { render :new }
         format.json { render json: @community.errors, status: :unprocessable_entity }
       end
     end
