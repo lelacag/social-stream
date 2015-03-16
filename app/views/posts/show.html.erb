@@ -1,15 +1,26 @@
 <h2><%= @community.name %> <%= @post.subject %></h2>
 <%= @post.body %>
-<div>
+<div class="col-md-10">
   <% if current_user && !@post.votes_for.collect(&:voter_id).include?(current_user.id) %>
     <%= link_to liked_by_community_post_path(@community, @post), remote: true do %>
       <%= image_tag('like.png', size: '30x30') %>
     <% end %>
   <% else %>
-    <%#= link_to '#' do %>
-      <%= image_tag('like.png', size: '30x30') %>
-    <%# end %>
+    <%= image_tag('like.png', size: '30x30') %>
   <% end %>
   Liked <span id="post_like_<%= @post.id %>"><%= @post.votes_for.count %></span>
 </div>
-<%#= render_shareable :url=> community_post_path(@community, @post), :facebook=> {:send=> 'true', :url=> community_post_path(@community, @post)}, :buttons=> ['twitter', 'facebook'] %>
+<% community_name = @community.name %>
+<% url = community_post_url(@community, @post) %>
+<div class="col-md-2 nopadding">
+  <div class="pull-right">
+    <%= link_to("http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{community_name}",
+        class: "popup", :"data-width" => "550", :"data-height"=> "400") do %>
+      <%= image_tag('facebook.png', size: '30x30') %>
+    <% end %>
+    <%= link_to("https://twitter.com/intent/tweet?text=#{community_name}+#{url}",
+        class: "popup", :"data-width" => "550", :"data-height"=> "400") do %>
+      <%= image_tag('twitter.png', size: '30x30') %>
+    <% end %>
+  </div>
+</div>
