@@ -15,14 +15,11 @@
   <% url = community_post_url(@community, @post) %>
   <div class="col-md-2 nopadding">
     <div class="pull-right">
-      <%= link_to("http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{community_name}",
-          class: "popup", :"data-width" => "550", :"data-height"=> "400") do %>
-        <%= image_tag('facebook.png', size: '30x30') %>
-      <% end %>
-      <%= link_to("https://twitter.com/intent/tweet?text=#{community_name}+#{url}",
-          class: "popup", :"data-width" => "550", :"data-height"=> "400") do %>
-        <%= image_tag('twitter.png', size: '30x30') %>
-      <% end %>
+      <%= link_to(image_tag('facebook.png', size: '30x30'), "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{community_name}",
+          class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
+      <%= link_to(image_tag('twitter.png', size: '30x30'), "https://twitter.com/intent/tweet?text=#{community_name}+#{url}",
+          class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
+      <%= link_to(image_tag('reddit.png', size: '30x30'), '//www.reddit.com/submit', class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
     </div>
   </div>
 </div>
