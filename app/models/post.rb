@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
   acts_as_inkwell_post
   acts_as_votable
 
-  validates :subject, :body, presence: true
+  validates :subject, presence: true
 
   scope :approved, -> { where(censor_approved: nil) }
   scope :not_reported, -> { where(report: false) }
