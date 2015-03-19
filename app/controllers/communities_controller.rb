@@ -106,7 +106,7 @@ class CommunitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def community_params
-    params.require(:community).permit(:name, :image)
+    params.require(:community).permit(:name, :image, :at_the_beginning, :domain)
   end
 
   # def set_user

@@ -1,8 +1,6 @@
 <%= form_for([@user, @community])do |f| %>
   <% if @community.errors.any? %>
     <div id="error_explanation">
-      <!-- <h2><%#= pluralize(@community.errors.count, "error") %> prohibited this community from being saved:</h2> -->
-
       <ul>
       <% @community.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -25,13 +23,13 @@
       </div>
       <div class="col-md-3">
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> At the beginning
+          <%= f.radio_button(:at_the_beginning, true) %> At the beginning
         </label>
         <p>Example: S world</p>
       </div>
       <div class="col-md-3">
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> At the end
+          <%= f.radio_button(:at_the_beginning, false) %> At the end
         </label>
         <p>Example: World S</p>
       </div>
@@ -39,14 +37,15 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :domain, :class => 'control-label' %>
     <div class="row">
       <div class="col-md-1">
         <p>http://</p>
       </div>
-      <div class="col-md-9">
-        <input type="text" class="form-control" placeholder="s">
+      <div class="col-md-9 nopadding">
+        <%= f.text_field :domain, :class => 'form-control', placeholder: "s" %>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 nopadding">
         <p>.setphrase.com</p>
       </div>
     </div>

@@ -1,34 +1,46 @@
 <%= form_for(@post, url: community_posts_path(@community)) do |f| %>
-	<% if @post.errors.any? %>
-		<div id="error_explanation">
-			<!-- <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2> -->
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-			<ul>
-			<% @post.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-			</ul>
-		</div>
-	<% end %>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-2">
 
-	<div class="col-md-10">
-		<div class="row">
-			<div class="col-md-2">
+      </div>
+      <div class="col-md-10">
+        <div class="form-group">
+          <div class="row">
+            <% if @community.at_the_beginning %>
+              <div class="col-md-4">
+                <p><%= @community.name %></p>
+              </div>
+              <div class="col-md-8">
+                <%= f.text_field :subject, class: "form-control", placeholder: "Complete it for your desire :)" %>
+              </div>
+            <% else %>
+              <div class="col-md-8">
+                <%= f.text_field :subject, class: "form-control", placeholder: "Complete it for your desire :)" %>
+              </div>
+              <div class="col-md-4">
+                <p><%= @community.name %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
 
-			</div>
-			<div class="col-md-10">
-				<div class="form-group">
-					<%#= f.label :subject %><br>
-					<%= f.text_field :subject, class: "form-control", placeholder: "Complete it for your desire :)"  %>
-				</div>
-
-				<div class="form-group">
-					<%#= f.label :body %><br>
-					<%= f.text_area :body, class: "form-control", rows: "7", placeholder: "What is the reason? Do you have any story behind it?" %>
-				</div>
-				<div class="actions">
-					<%= f.submit 'Send', class: "btn btn-primary pull-right" %>
-				</div>
-			</div>
-		</div>
+        <div class="form-group">
+          <%= f.text_area :body, class: "form-control", rows: "7", placeholder: "What is the reason? Do you have any story behind it?" %>
+        </div>
+        <div class="actions">
+          <%= f.submit 'Send', class: "btn btn-primary pull-right" %>
+        </div>
+      </div>
+    </div>
 <% end %>
