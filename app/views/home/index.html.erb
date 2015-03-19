@@ -17,8 +17,13 @@
             </div>
           <% end %>
         <% else %>
+          <h2>Do you have a brilliant phrase?</h2>
+          <button type="button" class="btn btn-lg btn-default" id="create-subscription">Create</button>
+          </br></br>
+          <p>Just for $2 for year</p>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true, html: { multipart: true }) do |f| %>
 
+          <div id="subscription-form" style="display:none">
             <div class="form-group">
               <%= text_field_tag :set_phrase, nil, class: "form-control set-phrase", placeholder: "Set Phrase", autofocus: true %>
             </div>
@@ -58,10 +63,11 @@
               </div>
 
             </div>
+          </div>
 
-            <div id="create-user" class="actions">
+<!--             <div id="create-user" class="actions">
               <input class="btn btn-lg btn-default" type="button" value="Create">
-            </div>
+            </div> -->
 
           <% end %>
         <% end %>
