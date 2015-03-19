@@ -8,7 +8,7 @@
             <!-- <div class="recent-phrases" style="background-image: url('<%#= asset_path community.image.url(:thumb) %>');"> -->
             <%= link_to community_path(community) do %>
               <% if community.image.exists? %>
-                <%= image_tag community.image.url(:thumb) %>
+                <%= image_tag community.image.url(:thumb), size: '190x190' %>
               <% else %>
                 <%= image_tag 'no_image.png' %>
               <% end %>
