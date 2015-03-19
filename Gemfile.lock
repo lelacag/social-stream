@@ -56,6 +56,15 @@ GIT
       multi_json (~> 1.8)
 
 GIT
+  remote: git://github.com/stripe/stripe-ruby.git
+  revision: 403e92fc8877d2dc1a5b9c17485dac8d3937989a
+  specs:
+    stripe (1.20.3)
+      json (~> 1.8.1)
+      mime-types (>= 1.25, < 3.0)
+      rest-client (~> 1.4)
+
+GIT
   remote: git://github.com/voormedia/rails-erd.git
   revision: f09ea2dd510dfec85fcd73c0defd673566a2b5f9
   branch: master
@@ -413,6 +422,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  stripe!
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

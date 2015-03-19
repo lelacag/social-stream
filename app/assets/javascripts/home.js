@@ -3,3 +3,7 @@ $(document).on('click', '#create-user', function(event) {
   $(this).remove();
   $('#user-input').show();
 });
+
+$(document).on('click', '#create-subscription', function(event) {
+  $('#subscription-form').show();
+});
