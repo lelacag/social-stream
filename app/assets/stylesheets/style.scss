@@ -119,7 +119,7 @@ figure {
   @include transition(transform 300ms ease-out);
   &:hover {
     @include transition(transform 700ms ease-out);
-  @include transform( rotate(45deg) translate3d(10px,10px,0) );
+    @include transform( rotate(45deg) translate3d(10px,10px,0) );
   }
   width: 100px;
   &:nth-child(even) {
@@ -128,13 +128,14 @@ figure {
     .crop img {
       @include transform( skew(-20deg, -20deg) rotate(-225deg)   );
     }
-  &:hover {
-  @include transform( rotate(225deg) translate3d(40px,130px,0) );
-  }
+    &:hover {
+      @include transform( rotate(225deg) translate3d(40px,130px,0) );
+    }
   }
 }
 .crop {
-  position: relative;
+  /*position: relative;*/
+  position: absolute;
   width: 130px;
   height: 130px;
   margin: 0;
@@ -142,7 +143,6 @@ figure {
   overflow: hidden;
   @include transform( skew(20deg, 20deg) translate3d(0,0,0));
   img {
-
     width: 100px;
     height: 100px;
     position: absolute;
