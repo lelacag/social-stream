@@ -19,7 +19,7 @@
           <div class="row">
             <% if @community.at_the_beginning %>
               <div class="col-md-4">
-                <p><%= @community.name %></p>
+                <h2 class="community-name"><%= @community.name %></h2>
               </div>
               <div class="col-md-8">
                 <%= f.text_field :subject, class: "form-control", placeholder: "Complete it for your desire :)" %>
@@ -29,7 +29,7 @@
                 <%= f.text_field :subject, class: "form-control", placeholder: "Complete it for your desire :)" %>
               </div>
               <div class="col-md-4">
-                <p><%= @community.name %></p>
+                <h2 class="community-name"><%= @community.name %></h2>
               </div>
             <% end %>
           </div>
