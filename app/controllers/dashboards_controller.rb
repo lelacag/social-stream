@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
   before_action :set_user
 
   def index
-    @communities = @user.communities
+    @communities = Community.where(owner_id: current_user)
   end
 
   private

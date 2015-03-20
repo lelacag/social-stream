@@ -1,0 +1,62 @@
+<% if @posts.present? %>
+  <h1>Reports for <%= @community.name %></h1>
+<% else %>
+  <h1>No Reports</h1>
+<% end -%>
+
+<% @posts.each do |post| %>
+  <div id="post_<%= post.id %>">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10">
+        <%= link_to community_post_path(@community, post) do %>
+          <% if @community.at_the_beginning %>
+            <h2><%= @community.name %> <%= post.subject %></h2>
+          <% else %>
+            <h2><%= post.subject %> <%= @community.name %></h2>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="cont">
+          <div class="wrap">
+            <div class="crop">
+              <%= image_tag post.user.avatar.url(:thumb), size: "50x50" if post.user %>
+            </div>
+          </div>
+        </div>
+        <p class="username"><%= link_to post.user.username, user_path(post.user) if post.user %></p>
+      </div>
+      <div class="col-md-10">
+        <%= post.body %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+        <% if current_user && !post.votes_for.collect(&:voter_id).include?(current_user.id) %>
+          <%= link_to liked_by_community_post_path(@community, post), remote: true do %>
+            <%= image_tag('like.png', size: '30x30') %>
+          <% end %>
+        <% else %>
+          <%= image_tag('like.png', size: '30x30') %>
+        <% end %>
+        Liked <span id="post_like_<%= post.id %>"><%= post.votes_for.count %></span>
+      </div>
+      <% if @community.at_the_beginning %>
+        <% phrase = "#{@community.name} #{post.subject}" %>
+      <% else %>
+        <% phrase = "#{post.subject} #{@community.name}" %>
+      <% end %>
+      <% url = community_post_url(@community, post) %>
+      <div class="col-md-6 nopadding">
+        <div class="pull-right">
+          <%= link_to "Delete", community_post_path(@community, post), method: "delete", remote: true, data: { confirm: 'Are you sure?', disable_with: 'loading...' }, class: "btn btn-danger" %>
+          <%= link_to "Ignore", ignore_community_post_path(@community, post), remote: true, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join, :leave]
-  before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave]
+  before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave, :reports]
   # before_action :set_user, except: [:index, :join]
 
   # GET /communities
@@ -95,6 +95,10 @@ class CommunitiesController < ApplicationController
       format.js
       format.json
     end
+  end
+
+  def reports
+    @posts = @community.posts.where(report: true)
   end
 
   private

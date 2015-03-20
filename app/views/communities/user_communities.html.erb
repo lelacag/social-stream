@@ -1,0 +1,39 @@
+<h2 class="text-center">Listing Communities</h2>
+<% @communities.each_slice(4) do |row| %>
+  <div class="row mb10">
+    <% row.each do |community| %>
+      <div class="row-bottom">
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <%= link_to community_path(community) do %>
+            <% if community.image.exists? %>
+              <%= image_tag community.image.url(:thumb), size: '190x190' %>
+            <% else %>
+              <%= image_tag 'no_image.png' %>
+            <% end %>
+            <div class="pull-right">
+              <div class="row">
+                <%= link_to("Settings", edit_community_path(community), id: "community_#{community.id}", class: "btn btn-primary settings-button") %>
+              </div>
+              <div class="row">
+                <%= link_to("Users", community_users_path(community), id: "community_#{community.id}", class: "btn btn-primary users-button") %>
+              </div>
+              <div class="row">
+                <%= link_to("Reports", reports_community_path(community), id: "community_#{community.id}", class: "btn btn-primary reports-button") %>
+              </div>
+            </div>
+            <div class="bottom-align">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                Users: <%= community.users.count %>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="pull-right">
+                  Posts: <%= community.posts.count %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

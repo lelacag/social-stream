@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   respond_to :html
   before_action :authenticate_user!, only: [:like, :report]
-  before_action :set_post, only: [:show, :liked_by, :report]
+  before_action :set_post, only: [:show, :liked_by, :report, :destroy, :ignore]
   after_filter :send_post_to_community, only: :create
 
   def create
@@ -43,6 +43,22 @@ class PostsController < ApplicationController
       @post.update_attribute(:report, true)
       format.js
       format.json
+    end
+  end
+
+  def ignore
+    respond_to do |format|
+      @post.update_attribute(:report, false)
+      format.js
+      format.json
+    end
+  end
+
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+      format.js
     end
   end
 
