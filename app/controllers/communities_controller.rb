@@ -37,7 +37,7 @@ class CommunitiesController < ApplicationController
     respond_to do |format|
       if @community.save
         # format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
-        format.js   { render js: "window.location.href='"+community_path(@community)+"'" }
+        format.js   { render js: "window.location.href='" + community_path(@community) + "'" }
         format.json { render :show, status: :created, location: @community }
       else
         # format.html { render :new }
@@ -91,7 +91,7 @@ class CommunitiesController < ApplicationController
   def leave
     respond_to do |format|
       current_user.leave(@community)
-      format.html { redirect_to :back, notice: "you left this community" }
+      format.html { redirect_to :back, notice: 'you left this community' }
       format.js
       format.json
     end
