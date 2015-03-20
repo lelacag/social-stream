@@ -25,13 +25,13 @@
         <label class="radio-inline">
           <%= f.radio_button(:at_the_beginning, true) %> At the beginning
         </label>
-        <p>Example: S world</p>
+        <p>Example: <%= @community.name %> world</p>
       </div>
       <div class="col-md-3">
         <label class="radio-inline">
           <%= f.radio_button(:at_the_beginning, false) %> At the end
         </label>
-        <p>Example: World S</p>
+        <p>Example: World <%= @community.name %></p>
       </div>
     </div>
   </div>
