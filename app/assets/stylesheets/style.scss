@@ -108,7 +108,7 @@ figure {
 /* style for triangle avatar */
 
 .cont {
-  margin: 15px auto 0;
+  margin: 60px auto 0;
   font-size:0;
   /*max-width: 560px;*/
 }
@@ -119,17 +119,18 @@ figure {
   @include transition(transform 300ms ease-out);
   &:hover {
     @include transition(transform 700ms ease-out);
-    @include transform( rotate(45deg) translate3d(10px,10px,0) );
+    /*@include transform( rotate(45deg) translate3d(10px,10px,0) );*/
+    @include transform( rotate(45deg) translate3d(0,0,0) );
   }
   width: 100px;
   &:nth-child(even) {
     width: 40px;
     @include transform( rotate(225deg) translate3d(30px,120px,0) );
     .crop img {
-      @include transform( skew(-20deg, -20deg) rotate(-225deg)   );
+      @include transform( skew(-20deg, -20deg) rotate(-225deg) );
     }
     &:hover {
-      @include transform( rotate(225deg) translate3d(40px,130px,0) );
+      /*@include transform( rotate(225deg) translate3d(40px,130px,0) );*/
     }
   }
 }
@@ -160,7 +161,7 @@ figure {
 }
 
 .username {
-  margin: 60px 0 10px 60px;
+  margin: 20px 0 10px;
   position: absolute;
 }
 /* end style for triangle avatar */

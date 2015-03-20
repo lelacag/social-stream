@@ -58,6 +58,7 @@ group :development do
   gem 'annotate', github: 'ctran/annotate_models', branch: 'master'
   gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
   gem 'capistrano', '~> 3.3.0'
+  gem 'zeus'
 end
 
 group :production do

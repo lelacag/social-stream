@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     end
     get 'join', on: :member
     get 'leave', on: :member
-    resources :users
+    resources :users, only: :index
   end
+  resources :users
   root 'home#index'
   # post 'follow_user' => 'home#follow_user'
   # get '*username' => 'home#profile'
