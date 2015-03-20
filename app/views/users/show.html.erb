@@ -1,4 +1,29 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<!-- <%#= link_to 'Edit', edit_user_path(@user) %> | -->
+<%#= link_to 'Back', users_path %>
+
+<div class="col-md-6 col-md-offset-3">
+  <div class="row">
+    <div class="cont">
+      <div class="wrap">
+        <div class="crop">
+          <%= image_tag @user.avatar.url(:thumb), size: "50x50", class: 'img-responsive center-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <p class="username"><%= @user.username %></p>
+    </div>
+    <div class="col-md-6">
+      <% username = @user.username %>
+      <% url = user_path(@user) %>
+      <%= link_to(image_tag('facebook.png', size: '30x30'), "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{username}",
+          class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
+      <%= link_to(image_tag('twitter.png', size: '30x30'), "https://twitter.com/intent/tweet?text=#{username}+#{url}",
+          class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
+      <%= link_to(image_tag('reddit.png', size: '30x30'), '//www.reddit.com/submit', class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
+  </div>
+</div>
