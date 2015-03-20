@@ -59,6 +59,8 @@ group :development do
   gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
   gem 'capistrano', '~> 3.3.0'
   gem 'zeus'
+  # gem 'fabrication'
+  gem 'faker'
 end
 
 group :production do
