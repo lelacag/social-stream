@@ -33,7 +33,11 @@
     <div class="col-md-2"></div>
     <div class="col-md-10">
       <%= link_to community_post_path(@community, post) do %>
-        <h2><%= @community.name %> <%= post.subject %></h2>
+        <% if @community.at_the_beginning %>
+          <h2><%= @community.name %> <%= post.subject %></h2>
+        <% else %>
+          <h2><%= post.subject %> <%= @community.name %></h2>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -72,13 +76,17 @@
           Report
         <% end %>
       </div>
-      <% community_name = @community.name %>
+      <% if @community.at_the_beginning %>
+        <% phrase = "#{@community.name} #{post.subject}" %>
+      <% else %>
+        <% phrase = "#{post.subject} #{@community.name}" %>
+      <% end %>
       <% url = community_post_url(@community, post) %>
       <div class="col-md-3 nopadding">
         <div class="pull-right">
-          <%= link_to(image_tag('facebook.png', size: '30x30'), "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{community_name}",
+          <%= link_to(image_tag('facebook.png', size: '30x30'), "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{phrase}",
               class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
-          <%= link_to(image_tag('twitter.png', size: '30x30'), "https://twitter.com/intent/tweet?text=#{community_name}+#{url}",
+          <%= link_to(image_tag('twitter.png', size: '30x30'), "https://twitter.com/intent/tweet?text=#{phrase}+#{url}",
               class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
           <%= link_to(image_tag('reddit.png', size: '30x30'), '//www.reddit.com/submit', class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
         </div>
