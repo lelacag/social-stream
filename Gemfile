@@ -36,7 +36,8 @@ gem 'bootswatch-rails'
 gem 'puma'
 gem 'rubocop', require: false
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'stripe', github: 'stripe/stripe-ruby'
+# gem 'stripe', github: 'stripe/stripe-ruby'
+gem 'braintree', '~> 2.40.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

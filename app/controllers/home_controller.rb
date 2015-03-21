@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     if current_user
       @community = Community.new
     end
+    @client_token = Braintree::ClientToken.generate
   end
 
   def profile

@@ -17,3 +17,4 @@
 //= require community
 //= require home
 //= require form
+//= require braintree
