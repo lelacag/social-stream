@@ -23,12 +23,6 @@ class PostsController < ApplicationController
     @community = Community.find(params[:community_id])
   end
 
-  # def like
-  #   post = Post.find(params['post_id'])
-  #   current_user.favorite(post)
-  #   redirect_to :root
-  # end
-
   def liked_by
     respond_to do |format|
       @post.liked_by current_user
@@ -61,11 +55,6 @@ class PostsController < ApplicationController
       format.js
     end
   end
-
-  # def report
-  #   post_report = PostReport.create(user_id: current_user.id, post_id: params['post_id'])
-  #   redirect_to :root, notice: 'Post reported'
-  # end
 
   private
 
