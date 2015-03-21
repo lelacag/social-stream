@@ -17,7 +17,6 @@
 
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_many :post_reports
   acts_as_inkwell_post
   acts_as_votable
 
