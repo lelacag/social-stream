@@ -15,8 +15,6 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime
 #  updated_at             :datetime
-#  follower_count         :integer          default("0")
-#  following_count        :integer          default("0")
 #  avatar_file_name       :string
 #  avatar_content_type    :string
 #  avatar_file_size       :integer
@@ -25,6 +23,9 @@
 #  twitter_link           :string
 #  vine_link              :string
 #  username               :string
+#  follower_count         :integer          default("0")
+#  following_count        :integer          default("0")
+#  community_count        :integer          default("0")
 #
 
 class User < ActiveRecord::Base

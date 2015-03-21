@@ -13,6 +13,7 @@
 #  users_ids_who_comment_it  :text             default("[]")
 #  users_ids_who_reblog_it   :text             default("[]")
 #  communities_ids           :text             default("[]")
+#  report                    :boolean          default("false")
 #
 
 class Post < ActiveRecord::Base
