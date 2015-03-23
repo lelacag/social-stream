@@ -404,7 +404,7 @@ DEPENDENCIES
   capistrano3-puma
   coffee-rails (~> 4.1.0)
   compass-rails
-  devise
+  devise (~> 3.4.0)
   faker
   guard-livereload!
   heroku
