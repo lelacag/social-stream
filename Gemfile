@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.rc3'
+gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'compass-rails'
@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.0.3'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -28,7 +28,7 @@ gem 'devise'
 gem 'inkwell'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-gem 'inherited_resources', github: 'codecraft63/inherited_resources', branch: 'master'
+# gem 'inherited_resources', github: 'codecraft63/inherited_resources', branch: 'master'
 gem 'activeadmin', github: 'activeadmin'
 # gem 'shareable'
 gem 'paperclip', '~> 4.1'
@@ -58,7 +58,12 @@ group :development do
   gem 'guard-livereload', github: 'guard/guard-livereload', branch: 'master', require: false
   gem 'annotate', github: 'ctran/annotate_models', branch: 'master'
   gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
-  gem 'capistrano', '~> 3.3.0'
+  # gem 'capistrano', '~> 3.3.0'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
   gem 'zeus'
   # gem 'fabrication'
   gem 'faker'
