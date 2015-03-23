@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   # end
   devise_for :users, controllers: { sessions: 'users/sessions',
                                     registrations: 'users/registrations' }
-  resources :users do
-    resources :dashboards
-  end
+  # resources :users do
+  #   resources :dashboards
+  # end
   resources :communities do
     resources :posts, only: [:new, :create, :show, :destroy] do
       get 'liked_by', on: :member
@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   # resources :users
   root 'home#index'
   # post 'follow_user' => 'home#follow_user'
-  get '*username' => 'users#show', as: :username
+  get ':username' => 'users#show', as: :username
+  get ':username/dashboards' => 'dashboards#index', as: :user_dashboard
+  delete ':username/destroy' => 'users#destroy', as: :user_destroy
 end

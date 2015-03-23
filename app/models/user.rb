@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :communities, dependent: :destroy
+  # has_many :communities, dependent: :destroy
+  # has_many :communities_users, :class_name => 'Inkwell::CommunityUser', dependent: :destroy
   has_many :posts
   acts_as_inkwell_user
   has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100#' }, default_url: 'avatar.gif'

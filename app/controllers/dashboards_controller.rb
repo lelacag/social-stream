@@ -9,6 +9,7 @@ class DashboardsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = User.find_by(username: params[:username])
   end
 end
