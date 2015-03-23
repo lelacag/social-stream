@@ -24,6 +24,6 @@ production:
   database: setphrase_production
   pool: 5
   timeout: 5000
-  username: ENV['database_username']
-  password: ENV['database_password']
+  username: ENV['DATABASE_USERNAME']
+  password: ENV['DATABASE_PASSWORD']
   host: localhost
