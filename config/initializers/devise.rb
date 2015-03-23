@@ -4,9 +4,8 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '1d7c839c0086062949762619a78d84db76cb09e41895ec4d28d9175b160da8bc768275c8833f1ca560196a616edfcd5ff78929601b63a78736cffc49a466f383'
-  config.secret_key = ENV['SECRET_KEY_BASE']
-
+  # config.secret_key = '8f81b11d53cb7d33aaf66c14ea014cb2cd079a0c97ad075b4a39ab22b1e7fef328751b0d115bd9e0644a53c1ce64949bd06aeca53b9511e356eee419317e3b27'
+  config.secret_key = ENV['DEVISE_SECRET_KEY']
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -31,7 +30,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:email]
+  # config.authentication_keys = [ :email ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -43,12 +42,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [:email]
+  config.case_insensitive_keys = [ :email ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [:email]
+  config.strip_whitespace_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -99,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'a50ea9eeced0c41dfb85e364c4852fefc20b41a859935737cf01cff4b52e3fb9be95e3222eb968dd14508146af293a960f0fd77e033f51928d7d6bd454926c0e'
+  # config.pepper = '47df66094b828a814da6584be6e37519541b66264f93aad6cb2089d8ec1505e840a08ef645f6140194dfb590199cad7d232edb6e3f5c4cdb391a7b45931a4f92'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
