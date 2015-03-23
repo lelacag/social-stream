@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <p class="username"><%= link_to post.user.username, user_path(post.user) if post.user %></p>
+        <p class="username"><%= link_to post.user.username, username_path(post.user.username) if post.user %></p>
       </div>
       <div class="col-md-10">
         <%= post.body %>

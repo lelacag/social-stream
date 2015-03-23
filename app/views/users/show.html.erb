@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-6">
       <% username = @user.username %>
-      <% url = user_path(@user) %>
+      <% url = username_path(@user.username) %>
       <%= link_to(image_tag('facebook.png', size: '30x30'), "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=#{url}&p[title]=#{username}",
           class: "popup", :"data-width" => "550", :"data-height"=> "400") %>
       <%= link_to(image_tag('twitter.png', size: '30x30'), "https://twitter.com/intent/tweet?text=#{username}+#{url}",
