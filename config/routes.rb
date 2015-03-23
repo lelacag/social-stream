@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get 'reports', on: :member
     resources :users, only: :index
   end
-  resources :users
+  # resources :users
   root 'home#index'
   # post 'follow_user' => 'home#follow_user'
-  # get '*username' => 'home#profile'
+  get '*username' => 'users#show', as: :username
 end
