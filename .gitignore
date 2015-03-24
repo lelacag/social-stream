@@ -17,4 +17,4 @@
 /tmp
 /public
 
-#config/database.yml
+config/database.yml
