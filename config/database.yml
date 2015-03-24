@@ -22,8 +22,9 @@ production:
   adapter: postgresql
   encoding: unicode
   database: setphrase_production
-  pool: 5
+  pool: 10
   timeout: 5000
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: localhost
+  host: 104.236.109.35
+  port: 5432
