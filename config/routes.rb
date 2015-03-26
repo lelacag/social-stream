@@ -22,7 +22,7 @@ SocialStream::Application.routes.draw do
     resources :users, only: :index
   end
   # resources :users
-  root 'home#index'
+  root 'home#welcome'
   # post 'follow_user' => 'home#follow_user'
   get ':username' => 'users#show', as: :username
   get ':username/dashboards' => 'dashboards#index', as: :user_dashboard

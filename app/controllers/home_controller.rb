@@ -24,4 +24,7 @@ class HomeController < ApplicationController
       redirect_to :back, alert: 'Error following user'
     end
   end
+
+  def welcome
+  end
 end

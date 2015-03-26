@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<%= render partial: "partials/header" %>
+<%= render partial: "partials/header" unless current_page?(action: 'welcome')  %>
 
 <div class="container">
   <div id="flashes" class="row">
