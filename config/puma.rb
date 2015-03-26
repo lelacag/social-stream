@@ -14,4 +14,5 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection
 end
 
-# bind 'unix:///home/apps/setphrase/shared/tmp/sockets/setphrase-puma.sock'
+bind 'unix:///home/apps/setphrase/shared/tmp/sockets/setphrase-puma.sock'
+bind 'unix:///home/apps/setphrase_dev/shared/tmp/sockets/setphrase_dev-puma.sock'
