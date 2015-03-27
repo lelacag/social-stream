@@ -20,7 +20,7 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
-require 'capistrano/rails/migrations'
+# require 'capistrano/rails/migrations'
 require 'capistrano/postgresql'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
