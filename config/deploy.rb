@@ -5,7 +5,7 @@ lock '3.4.0'
 # server '104.236.109.35', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:alexandrule/social-stream.git'
-set :application,     'setphrase'
+# set :application,     'setphrase'
 set :user,            'root'
 # set :puma_threads,    [0, 16]
 # set :puma_workers,    0
