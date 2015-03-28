@@ -1,3 +1,6 @@
+app = "setphrase"
+root = "/home/apps/#{app}"
+
 workers Integer(ENV['WEB_CONCURRENCY'] || 2)
 threads_count = Integer(ENV['MAX_THREADS'] || 5)
 threads threads_count, threads_count
@@ -15,3 +18,7 @@ on_worker_boot do
 end
 
 # bind 'unix:///home/apps/setphrase/shared/tmp/sockets/setphrase-puma.sock'
+
+pidfile "#{root}/puma/puma.pid"
+stdout_redirect "#{root}/puma/puma.log", "#{root}/puma/puma_error.log"
+bind "unix:/tmp/#{app}-puma.sock"
