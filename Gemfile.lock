@@ -45,6 +45,14 @@ GIT
       multi_json (~> 1.8)
 
 GIT
+  remote: git://github.com/seuros/capistrano-puma.git
+  revision: 6d855752da6c0082a1860a5027f27b7bd25872d9
+  specs:
+    capistrano3-puma (0.9.0)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
+
+GIT
   remote: git://github.com/voormedia/rails-erd.git
   revision: 180fdc20fa505f34db13c68ebbb33c4fc9013926
   branch: master
@@ -134,9 +142,6 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano3-puma (0.9.0)
-      capistrano (~> 3.0)
-      puma (>= 2.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     choice (0.1.7)
@@ -404,7 +409,7 @@ DEPENDENCIES
   capistrano-postgresql (~> 4.2.0)
   capistrano-rails
   capistrano-rvm
-  capistrano3-puma
+  capistrano3-puma!
   coffee-rails (~> 4.1.0)
   compass-rails
   devise (~> 3.4.0)

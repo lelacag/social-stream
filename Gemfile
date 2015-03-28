@@ -59,12 +59,13 @@ group :development do
   gem 'annotate', github: 'ctran/annotate_models', branch: 'master'
   gem 'rails-erd', github: 'voormedia/rails-erd', branch: 'master'
   # gem 'capistrano', '~> 3.3.0'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
   gem 'capistrano-postgresql', '~> 4.2.0'
+  # gem 'capistrano-safe-deploy-to', '~> 1.1.1'
   gem 'zeus'
   # gem 'fabrication'
   gem 'faker'
