@@ -2,9 +2,9 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:follow_user]
 
   def index
-    # @post = Post.new
-    # @posts = Post.approved.reverse
     @communities = Community.limit(8)
+    # redirect_to root_url(subdomain: @current_community.domain)
+
     if current_user
       @community = Community.new
     end

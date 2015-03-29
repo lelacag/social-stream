@@ -1,6 +1,6 @@
 class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :join, :leave]
-  before_action :set_community, only: [:show, :edit, :update, :destroy, :join, :leave, :reports]
+  before_action :set_community, only: [:edit, :update, :destroy, :join, :leave, :reports]
   # before_action :set_user, except: [:index, :join]
 
   # GET /communities
@@ -14,6 +14,7 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
+    @community = Community.find_by_domain!(params[:domain])
     @post = @community.posts.new
     @posts = @community.posts.order('created_at DESC').not_reported
   end
@@ -32,7 +33,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
-    @community = Community.create name: params[:community][:name], owner_id: current_user.id, image: params[:community][:image]
+    @community = Community.create name: params[:community][:name], owner_id: current_user.id, image: params[:community][:image], domain: params[:community][:name]
 
     respond_to do |format|
       if @community.save
