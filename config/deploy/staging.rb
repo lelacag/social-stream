@@ -1,7 +1,7 @@
 server 'dev.setphrase.com', port: 22, roles: [:web, :app, :db], primary: true
 
 set :application, 'setphrase_dev'
-set :stage,     :development
+set :stage,     :production
 set :branch,    :develop
 set :deploy_to, "/home/apps/#{fetch(:application)}"
 
