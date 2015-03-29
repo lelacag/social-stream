@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def create_community
-    @community = Community.create name: params[:set_phrase], owner_id: resource.id, image: params[:image]
+    @community = Community.create name: params[:phrase], owner_id: resource.id, image: params[:image]
   end
 
   def update_resource(resource, params)

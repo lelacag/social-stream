@@ -41,4 +41,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
   validates :username, uniqueness: true
+
+  attr_accessor :phrase
+  validates :phrase, presence: true
 end
