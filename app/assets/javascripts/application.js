@@ -13,7 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require community
-//= require home
-//= require form
 //= require braintree
+//= require_tree ./js
