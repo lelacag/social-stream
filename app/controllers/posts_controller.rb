@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to community_url(@community), notice: 'Phrase was successfully created.' }
+        format.html { redirect_to show_community_url, notice: 'Phrase was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -20,7 +20,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @community = Community.find(params[:community_id])
+    # @community = Community.find(params[:community_id])
+    @community = Community.find_by_subdomain!(request.subdomain)
   end
 
   def liked_by

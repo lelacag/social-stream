@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @community = Community.find_by_subdomain(params[:subdomain])
+    @community = Community.find_by_subdomain!(request.subdomain)
     @users = @community.users
   end
 

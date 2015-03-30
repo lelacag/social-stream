@@ -57,7 +57,7 @@ class CommunitiesController < ApplicationController
   def update
     respond_to do |format|
       if @community.update(community_params)
-        format.html { redirect_to community_url(@community), notice: 'Community was successfully updated.' }
+        format.html { redirect_to show_community_url, notice: 'Community was successfully updated.' }
         format.json { render :show, status: :ok, location: @community }
       else
         format.html { render :edit }
@@ -110,13 +110,12 @@ class CommunitiesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_community
-    # @community = Community.find(params[:id])
-    @community = Community.find_by_subdomain(params[:subdomain])
+    @community = Community.find_by_subdomain!(request.subdomain)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def community_params
-    params.require(:community).permit(:name, :image, :at_the_beginning, :domain)
+    params.require(:community).permit(:name, :image, :at_the_beginning, :subdomain)
   end
 
   # def set_user
