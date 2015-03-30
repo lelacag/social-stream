@@ -24,7 +24,7 @@ class CommunitiesController < ApplicationController
       #   redirect_to 'http://dev.setphrase.com/'
       end
     else
-      redirect_to 'http://dev.setphrase.com/'
+      redirect_to 'http://setphrase.com/'
     end
   end
 
