@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:follow_user]
 
   def index
+    # p request.subdomain
     @communities = Community.limit(8)
     if current_user
       @community = Community.new
