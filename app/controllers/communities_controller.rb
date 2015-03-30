@@ -35,12 +35,13 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
-    @community = Community.create name: params[:community][:name], owner_id: current_user.id, image: params[:community][:image], subdomain: params[:community][:name]
+    @community = Community.create name: params[:community][:name], owner_id: current_user.id,
+                                  image: params[:community][:image], subdomain: params[:community][:name].gsub!(" ", "-").downcase
 
     respond_to do |format|
       if @community.save
         # format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
-        format.js   { render js: "window.location.href='" + community_path(@community) + "'" }
+        format.js   { render js: "window.location.href='" + show_community_path + "'" }
         format.json { render :show, status: :created, location: @community }
       else
         # format.html { render :new }
