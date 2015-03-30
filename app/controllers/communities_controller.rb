@@ -20,8 +20,8 @@ class CommunitiesController < ApplicationController
         @community = Community.find_by_subdomain!(request.subdomain)
         @post = @community.posts.new
         @posts = @community.posts.order('created_at DESC').not_reported
-      else
-        redirect_to 'http://dev.setphrase.com/'
+      # else
+      #   redirect_to 'http://dev.setphrase.com/'
       end
     else
       redirect_to 'http://dev.setphrase.com/'
