@@ -18,7 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
         # respond_with resource, location: after_inactive_sign_up_path_for(resource)
-        render js: "window.location.href=' " +  communities_path + " ' "
+        # render js: "window.location.href=' " +  communities_path + " ' "
+        render js: "window.location.href=' " +  root_path + " ' "
         # render html: redirect_to communities_path, notice: 'Community was successfully created.'
       end
     else
@@ -33,7 +34,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def create_community
-    @community = Community.create name: params[:phrase], owner_id: resource.id, image: params[:image], subdomain: params[:phrase]
+    if params[:phrase].present?
+      @community = Community.create name: params[:phrase], owner_id: resource.id, image: params[:image], subdomain: params[:phrase]
+    end
   end
 
   def update_resource(resource, params)

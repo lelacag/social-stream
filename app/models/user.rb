@@ -43,5 +43,5 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
 
   attr_accessor :phrase
-  validates :phrase, presence: true
+  validates :phrase, presence: true, if: Proc.new { |user| user.phrase }
 end
