@@ -14,12 +14,12 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
-    if request.subdomain
+    if request.subdomain && request.subdomain != 'dev'
       @community = Community.find_by_subdomain!(request.subdomain)
       @post = @community.posts.new
       @posts = @community.posts.order('created_at DESC').not_reported
     else
-      redirect_to root_path
+      redirect_to 'http://dev.setphrase.com/'
     end
   end
 
