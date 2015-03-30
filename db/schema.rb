@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321072929) do
+ActiveRecord::Schema.define(version: 20150330072508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", force: true do |t|
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
     t.string   "resource_id",   null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "admin_users", force: true do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(version: 20150321072929) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "catch_phrases", force: true do |t|
+  create_table "catch_phrases", force: :cascade do |t|
     t.string   "phrase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.text     "parent_ids", default: "[]"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.string   "owner_type"
   end
 
-  create_table "communities", force: true do |t|
+  create_table "communities", force: :cascade do |t|
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.integer  "owner_id"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "at_the_beginning"
-    t.string   "domain"
+    t.string   "subdomain"
   end
 
-  create_table "inkwell_blog_item_categories", force: true do |t|
+  create_table "inkwell_blog_item_categories", force: :cascade do |t|
     t.integer  "blog_item_id"
     t.integer  "category_id"
     t.integer  "item_id"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.datetime "updated_at"
   end
 
-  create_table "inkwell_blog_items", force: true do |t|
+  create_table "inkwell_blog_items", force: :cascade do |t|
     t.integer  "item_id"
     t.boolean  "is_reblog"
     t.datetime "created_at"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.text     "category_ids", default: "[]"
   end
 
-  create_table "inkwell_comments", force: true do |t|
+  create_table "inkwell_comments", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "body"
     t.integer  "parent_comment_id"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.string   "topmost_obj_type"
   end
 
-  create_table "inkwell_community_users", force: true do |t|
+  create_table "inkwell_community_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "community_id"
     t.string   "user_access",      default: "r"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.boolean  "asked_invitation", default: false
   end
 
-  create_table "inkwell_favorite_items", force: true do |t|
+  create_table "inkwell_favorite_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "owner_id"
     t.datetime "created_at"
@@ -143,14 +143,14 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.string   "owner_type"
   end
 
-  create_table "inkwell_followings", force: true do |t|
+  create_table "inkwell_followings", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "inkwell_timeline_items", force: true do |t|
+  create_table "inkwell_timeline_items", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "owner_id"
     t.text     "from_source",      default: "[]"
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.string   "owner_type"
   end
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "subject"
     t.integer  "user_id"
     t.text     "body"
@@ -175,12 +175,12 @@ ActiveRecord::Schema.define(version: 20150321072929) do
     t.boolean  "report",                    default: false
   end
 
-  create_table "settings", force: true do |t|
+  create_table "settings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(version: 20150321072929) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
     t.string   "votable_type"
     t.integer  "voter_id"

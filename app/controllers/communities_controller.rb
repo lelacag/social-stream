@@ -14,9 +14,13 @@ class CommunitiesController < ApplicationController
   # GET /communities/1
   # GET /communities/1.json
   def show
-    @community = Community.find_by_domain!(params[:domain])
-    @post = @community.posts.new
-    @posts = @community.posts.order('created_at DESC').not_reported
+    if request.subdomain
+      @community = Community.find_by_subdomain!(request.subdomain)
+      @post = @community.posts.new
+      @posts = @community.posts.order('created_at DESC').not_reported
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /communities/new
@@ -33,7 +37,7 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
-    @community = Community.create name: params[:community][:name], owner_id: current_user.id, image: params[:community][:image], domain: params[:community][:name]
+    @community = Community.create name: params[:community][:name], owner_id: current_user.id, image: params[:community][:image], subdomain: params[:community][:name]
 
     respond_to do |format|
       if @community.save
@@ -106,7 +110,8 @@ class CommunitiesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_community
-    @community = Community.find(params[:id])
+    # @community = Community.find(params[:id])
+    @community = Community.find_by_subdomain(params[:subdomain])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

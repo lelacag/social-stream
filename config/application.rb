@@ -24,5 +24,7 @@ module SocialStream
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.precompile += ['active_admin.css']
+
+    config.autoload_paths += %W(#{Rails.root}/lib)
   end
 end

@@ -3,8 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @communities = Community.limit(8)
-    # redirect_to root_url(subdomain: @current_community.domain)
-
     if current_user
       @community = Community.new
     end

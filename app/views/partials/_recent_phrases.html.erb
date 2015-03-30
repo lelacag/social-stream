@@ -7,7 +7,7 @@
           <div class="row-bottom">
             <div class="col-md-3 col-sm-3 col-xs-3">
               <!-- <div class="recent-phrases" style="background-image: url('<%#= asset_path community.image.url(:thumb) %>');"> -->
-              <%= link_to community_path(community) do %>
+              <%= link_to root_url(subdomain: community.subdomain) do %>
                 <% if community.image.exists? %>
                   <%= image_tag community.image.url(:thumb), size: '190x190' %>
                 <% else %>
