@@ -29,7 +29,7 @@ SocialStream::Application.routes.draw do
     get '/', to: 'communities#show', as: :show_community
     get '/edit', to: 'communities#edit', as: :edit_community
     get 'posts/:id', to: 'posts#show', as: :show_post
-    resources :users, only: :index
+    resources :users
   end
 
   # http://apidock.com/rails/ActionDispatch/Routing/Mapper/Scoping/constraints

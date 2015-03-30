@@ -15,7 +15,7 @@
                 <%= link_to("Settings", edit_community_path(community), id: "community_#{community.id}", class: "btn btn-primary settings-button") %>
               </div>
               <div class="row">
-                <%= link_to("Users", community_users_path(community), id: "community_#{community.id}", class: "btn btn-primary users-button") %>
+                <%= link_to("Users", user_path(community), id: "community_#{community.id}", class: "btn btn-primary users-button") %>
               </div>
               <div class="row">
                 <%= link_to("Reports", reports_community_path(community), id: "community_#{community.id}", class: "btn btn-primary reports-button") %>
