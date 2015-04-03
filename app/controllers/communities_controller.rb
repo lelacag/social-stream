@@ -35,8 +35,9 @@ class CommunitiesController < ApplicationController
   # POST /communities.json
   def create
     # @community = Community.new(community_params)
+    subdomain = params[:community][:name].gsub!(" ", "-").downcase if params[:community][:name].present?
     @community = Community.create name: params[:community][:name], owner_id: current_user.id,
-                                  image: params[:community][:image], subdomain: params[:community][:name].gsub!(" ", "-").downcase
+                                  image: params[:community][:image], subdomain: subdomain
 
     respond_to do |format|
       if @community.save
