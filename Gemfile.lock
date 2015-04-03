@@ -17,6 +17,15 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/arunagw/omniauth-twitter.git
+  revision: cfee770aa3cf804abfd618fa4974ca3643b2f3e6
+  branch: master
+  specs:
+    omniauth-twitter (1.1.0)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+
+GIT
   remote: git://github.com/ctran/annotate_models.git
   revision: 52ffefcbe4e89cb172e2007eda0f74ac40798727
   branch: master
@@ -43,6 +52,23 @@ GIT
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
+
+GIT
+  remote: git://github.com/intridea/omniauth.git
+  revision: fc304abe2b56cb6efeff87efdc50d120f4d8e1c0
+  branch: master
+  specs:
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
+      rack (~> 1.0)
+
+GIT
+  remote: git://github.com/mkdynamic/omniauth-facebook.git
+  revision: fdd28dd237ca3dd147c0a57d7eeae31ebc9e7a00
+  branch: master
+  specs:
+    omniauth-facebook (2.1.0)
+      omniauth-oauth2 (~> 1.2)
 
 GIT
   remote: git://github.com/seuros/capistrano-puma.git
@@ -193,6 +219,8 @@ GEM
     execjs (2.4.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.8)
     formatador (0.2.5)
     formtastic (3.1.3)
@@ -213,6 +241,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashie (3.4.1)
     heroku (3.30.3)
       heroku-api (~> 0.3.19)
       launchy (>= 0.3.2)
@@ -245,6 +274,7 @@ GEM
     jquery-ui-rails (5.0.3)
       railties (>= 3.2.16)
     json (1.8.2)
+    jwt (1.4.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -264,6 +294,8 @@ GEM
     mini_portile (0.6.2)
     minitest (5.5.1)
     multi_json (1.11.0)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -274,6 +306,21 @@ GEM
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth (0.4.7)
+    oauth2 (1.0.0)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.2.0)
+      faraday (>= 0.8, < 0.10)
+      multi_json (~> 1.3)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -419,6 +466,9 @@ DEPENDENCIES
   inkwell
   jbuilder (~> 2.0)
   jquery-rails (>= 4.0.3)
+  omniauth!
+  omniauth-facebook!
+  omniauth-twitter!
   paperclip (~> 4.1)
   pg
   puma

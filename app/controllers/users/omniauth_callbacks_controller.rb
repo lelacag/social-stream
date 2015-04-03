@@ -1,28 +1,21 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  skip_before_filter :authenticate_user!
 
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
+  def all
+    p env["omniauth.auth"]
+    user = User.from_omniauth(request.env["omniauth.auth"])
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+    if user.persisted?
+      set_flash_message(:notice, :success, :kind => user.provider) if is_navigational_format?
+      sign_in user, :event => :authentication #this will throw if user is not activated
+      render 'shared/close_popup'
+    else
+      flash[:error] = "There was a problem with logging in. Please try again."
+      render :text => "There was a problem with logging in. Please try again."
+    end
+  end
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when omniauth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  alias_method :facebook, :all
+  alias_method :twitter, :all
 end
