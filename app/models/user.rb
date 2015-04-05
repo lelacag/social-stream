@@ -31,7 +31,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :twitter]
+         :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   # has_many :communities, dependent: :destroy
   # has_many :communities_users, :class_name => 'Inkwell::CommunityUser', dependent: :destroy
