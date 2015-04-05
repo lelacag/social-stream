@@ -40,7 +40,8 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'braintree', '~> 2.40.0'
 gem 'omniauth', github: 'intridea/omniauth', branch: 'master'
 gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook', branch: 'master'
-gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter', branch: 'master'
+gem 'omniauth-twitter', github: 'arunagw/omniauth-twitter', branch: 'master'
+gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

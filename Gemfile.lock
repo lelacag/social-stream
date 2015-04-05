@@ -89,6 +89,17 @@ GIT
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
 
+GIT
+  remote: git://github.com/zquestz/omniauth-google-oauth2.git
+  revision: 82102b9a2fb94ba4a52c2effc2fc2ce94c88d83e
+  branch: master
+  specs:
+    omniauth-google-oauth2 (0.2.6)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -468,6 +479,7 @@ DEPENDENCIES
   jquery-rails (>= 4.0.3)
   omniauth!
   omniauth-facebook!
+  omniauth-google-oauth2!
   omniauth-twitter!
   paperclip (~> 4.1)
   pg
