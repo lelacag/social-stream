@@ -2,6 +2,7 @@ server 'setphrase.com', port: 22, roles: [:web, :app, :db], primary: true
 
 set :application, 'setphrase'
 set :stage,     :production
+set :branch,    :master
 set :deploy_to, "/home/apps/#{fetch(:application)}"
 
 # Don't change these unless you know what you're doing
@@ -13,7 +14,7 @@ set :deploy_to,       "/home/apps/#{fetch(:application)}"
 # set :puma_rackup, -> { File.join(current_path, 'config.ru') }
 # set :puma_state, -> { File.join(shared_path, 'tmp', 'pids', 'puma.state') }
 # set :puma_pid, -> { File.join(shared_path, 'tmp', 'pids', 'puma.pid') }
-# set :puma_bind, -> { File.join("unix://#{shared_path}", 'tmp', 'sockets', "#{fetch(:application)}-puma.sock") }
+set :puma_bind, -> { File.join("unix://#{shared_path}", 'tmp', 'sockets', "#{fetch(:application)}-puma.sock") }
 # set :puma_conf, -> { File.join(shared_path, 'puma.rb') }
 # set :puma_access_log, -> { File.join(shared_path, 'log', 'puma_access.log') }
 # set :puma_error_log, -> { File.join(shared_path, 'log', 'puma_error.log') }
