@@ -31,7 +31,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
+         :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2, :yahoo]
 
   # has_many :communities, dependent: :destroy
   # has_many :communities_users, :class_name => 'Inkwell::CommunityUser', dependent: :destroy
@@ -54,14 +54,18 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.username = auth.info.name.gsub(/\s+/, "").downcase
+      if auth.provider == 'yahoo'
+        user.username = auth.info.nickname.gsub(/\s+/, "").downcase
+      else
+        user.username = auth.info.name.gsub(/\s+/, "").downcase
+      end
       user.email = auth.info.email if auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
       user.image_url = auth.info.image
       # if auth.provider == "facebook"
       user.oauth_token = auth.credentials.token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
       # end
       user.save!
     end

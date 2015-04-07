@@ -17,15 +17,6 @@ GIT
       sass-rails
 
 GIT
-  remote: git://github.com/arunagw/omniauth-twitter.git
-  revision: cfee770aa3cf804abfd618fa4974ca3643b2f3e6
-  branch: master
-  specs:
-    omniauth-twitter (1.1.0)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
-
-GIT
   remote: git://github.com/ctran/annotate_models.git
   revision: 52ffefcbe4e89cb172e2007eda0f74ac40798727
   branch: master
@@ -63,14 +54,6 @@ GIT
       rack (~> 1.0)
 
 GIT
-  remote: git://github.com/mkdynamic/omniauth-facebook.git
-  revision: fdd28dd237ca3dd147c0a57d7eeae31ebc9e7a00
-  branch: master
-  specs:
-    omniauth-facebook (2.1.0)
-      omniauth-oauth2 (~> 1.2)
-
-GIT
   remote: git://github.com/seuros/capistrano-puma.git
   revision: 6d855752da6c0082a1860a5027f27b7bd25872d9
   specs:
@@ -88,17 +71,6 @@ GIT
       activesupport (>= 3.2)
       choice (~> 0.1.6)
       ruby-graphviz (~> 1.0.4)
-
-GIT
-  remote: git://github.com/zquestz/omniauth-google-oauth2.git
-  revision: 82102b9a2fb94ba4a52c2effc2fc2ce94c88d83e
-  branch: master
-  specs:
-    omniauth-google-oauth2 (0.2.6)
-      jwt (~> 1.0)
-      multi_json (~> 1.3)
-      omniauth (>= 1.1.1)
-      omniauth-oauth2 (>= 1.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -324,6 +296,11 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    omniauth-facebook (2.0.1)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (0.2.6)
+      omniauth (> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -332,6 +309,11 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-twitter (1.1.0)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+    omniauth-yahoo (0.0.6)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
@@ -478,9 +460,10 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails (>= 4.0.3)
   omniauth!
-  omniauth-facebook!
-  omniauth-google-oauth2!
-  omniauth-twitter!
+  omniauth-facebook (~> 2.0.1)
+  omniauth-google-oauth2 (~> 0.2.6)
+  omniauth-twitter (~> 1.1.0)
+  omniauth-yahoo (~> 0.0.5)
   paperclip (~> 4.1)
   pg
   puma

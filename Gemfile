@@ -39,9 +39,10 @@ gem 'acts_as_votable', '~> 0.10.0'
 # gem 'stripe', github: 'stripe/stripe-ruby'
 gem 'braintree', '~> 2.40.0'
 gem 'omniauth', github: 'intridea/omniauth', branch: 'master'
-gem 'omniauth-facebook', github: 'mkdynamic/omniauth-facebook', branch: 'master'
-gem 'omniauth-twitter', github: 'arunagw/omniauth-twitter', branch: 'master'
-gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2', branch: 'master'
+gem 'omniauth-facebook', '~> 2.0.1'
+gem 'omniauth-twitter', '~> 1.1.0'
+gem 'omniauth-google-oauth2', '~> 0.2.6'
+gem 'omniauth-yahoo', '~> 0.0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
