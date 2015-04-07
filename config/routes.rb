@@ -40,4 +40,6 @@ SocialStream::Application.routes.draw do
   get ':username' => 'users#show', as: :username
   get ':username/dashboards' => 'dashboards#index', as: :user_dashboard
   delete ':username/destroy' => 'users#destroy', as: :user_destroy
+
+  post 'users/auth/google_oauth2/callback' => 'sessions#create'
 end

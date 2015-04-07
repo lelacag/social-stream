@@ -1,4 +1,4 @@
-server 'dev.setphrase.com', port: 22, roles: [:web, :app, :db], primary: true
+server 'setphrase.com', port: 22, roles: [:web, :app, :db], primary: true
 
 set :application, 'setphrase_dev'
 set :stage,     :production
