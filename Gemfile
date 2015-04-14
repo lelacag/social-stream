@@ -43,6 +43,7 @@ gem 'omniauth-facebook', '~> 2.0.1'
 gem 'omniauth-twitter', '~> 1.1.0'
 gem 'omniauth-google-oauth2', '~> 0.2.6'
 gem 'omniauth-yahoo', '~> 0.0.5'
+gem "font-awesome-rails", github: 'bokmann/font-awesome-rails', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

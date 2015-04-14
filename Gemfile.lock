@@ -17,6 +17,14 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/bokmann/font-awesome-rails.git
+  revision: 7126279404c3ef961c77f4d0b514f4d78b3c590d
+  branch: master
+  specs:
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
+
+GIT
   remote: git://github.com/ctran/annotate_models.git
   revision: 52ffefcbe4e89cb172e2007eda0f74ac40798727
   branch: master
@@ -454,6 +462,7 @@ DEPENDENCIES
   compass-rails
   devise (~> 3.4.0)
   faker
+  font-awesome-rails!
   guard-livereload!
   heroku
   inkwell

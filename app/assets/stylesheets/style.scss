@@ -186,3 +186,21 @@ figure {
 .community-name {
   margin-top: 0;
 }
+
+.btn-social {
+  max-width: 265px;
+  width: 100%;
+  height: 45px;
+  text-transform: uppercase;
+  border-radius: 0;
+  font-size: 14px;
+  color: #fff;
+  padding-left: 70px;
+}
+
+.btn-social>:first-child {
+  border-right: 1px solid #b3bfd7;
+  padding-top: 5px;
+  width: 45px;
+  font-size: 1.4em;
+}
