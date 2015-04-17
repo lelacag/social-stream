@@ -3,7 +3,7 @@
     <div class="cont">
       <div class="wrap">
         <div class="crop">
-          <%= image_tag @user.avatar.url(:thumb), size: "50x50", class: 'img-responsive center-block' %>
+          <%= image_tag @user.avatar.url(:thumb), size: "50x50", class: 'img-responsive center-block' if @user %>
         </div>
       </div>
     </div>
