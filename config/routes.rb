@@ -42,4 +42,10 @@ SocialStream::Application.routes.draw do
   delete ':username/destroy' => 'users#destroy', as: :user_destroy
 
   post 'users/auth/google_oauth2/callback' => 'sessions#create'
+
+  get 'page/contact_us' => 'home#contact_us', as: :contact_us
+  get 'page/news' => 'home#news', as: :news
+  get 'page/about_us' => 'home#about_us', as: :about_us
+  get 'page/terms' => 'home#terms', as: :terms
+  get 'page/privacy' => 'home#privacy', as: :privacy
 end
