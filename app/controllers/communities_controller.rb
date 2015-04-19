@@ -111,10 +111,10 @@ class CommunitiesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_community
-    if request
-      @community = Community.find_by_subdomain!(request.subdomain)
-    else
+    if params[:id]
       @community = Community.find_by_subdomain!(params[:id])
+    else
+      @community = Community.find_by_subdomain!(request.subdomain)
     end
   end
 
