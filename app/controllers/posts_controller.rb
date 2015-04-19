@@ -57,6 +57,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def reports
+    community = Community.find_by_subdomain!(request.subdomain)
+    @posts = community.posts.where(report: true)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

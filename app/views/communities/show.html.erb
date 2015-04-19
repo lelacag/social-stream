@@ -3,12 +3,12 @@
 
   <% if current_user && !@community.user_ids.include?(current_user.id) || current_user && !@community.owner_id == current_user.id %>
     <h3>If you want to post, please join</h3>
-    <%= link_to("Join", join_community_path(@community), id: "community_#{@community.id}", class: "btn btn-info") %>
+    <%= link_to("Join", join_community_path(@community.subdomain), id: "community_#{@community.id}", class: "btn btn-info") %>
   <% elsif current_user && @community.user_ids.include?(current_user.id) %>
-    <%= link_to("Leave", leave_community_path(@community), id: "community_#{@community.id}", class: "btn btn-success") unless @community.owner_id == current_user.id %>
+    <%= link_to("Leave", leave_community_path(@community.subdomain), id: "community_#{@community.id}", class: "btn btn-success") unless @community.owner_id == current_user.id %>
   <% else %>
     <h3>If you want to post, please join</h3>
-    <%= link_to("Join", join_community_path(@community), id: "community_#{@community.id}", class: "btn btn-info") %>
+    <%= link_to("Join", join_community_path(@community.subdomain), id: "community_#{@community.id}", class: "btn btn-info") %>
   <% end %>
 
   <h5><%= link_to @community.users.count.to_s + " Users", users_path %></h5>

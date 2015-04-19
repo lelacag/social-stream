@@ -10,10 +10,10 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <p class="username"><%= @user.username %></p>
+      <p class="username"><%= @user.username if @user %></p>
     </div>
     <div class="col-md-6">
-      <% username = @user.username %>
+      <% username = @user.username || current_user.username %>
       <% url = username_path(@user.username) %>
       <%= link_to(image_tag('facebook.png', size: '30x30'), @user.facebook_link, target: '_blank') if @user.facebook_link.present? %>
       <%= link_to(image_tag('twitter.png', size: '30x30'), @user.twitter_link, target: '_blank') if @user.twitter_link.present? %>

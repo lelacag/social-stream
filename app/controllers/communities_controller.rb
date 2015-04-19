@@ -15,7 +15,8 @@ class CommunitiesController < ApplicationController
     if request.subdomain
       @community = Community.find_by_subdomain!(request.subdomain)
       @post = @community.posts.new
-      @posts = @community.posts.order('created_at DESC').not_reported
+      # @posts = @community.posts.order('created_at DESC').not_reported
+      @posts = @community.posts.order('created_at DESC')
     end
   end
 
@@ -102,15 +103,19 @@ class CommunitiesController < ApplicationController
     end
   end
 
-  def reports
-    @posts = @community.posts.where(report: true)
-  end
+  # def reports
+  #   @posts = @community.posts.where(report: true)
+  # end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_community
-    @community = Community.find_by_subdomain!(request.subdomain)
+    if request
+      @community = Community.find_by_subdomain!(request.subdomain)
+    else
+      @community = Community.find_by_subdomain!(params[:id])
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

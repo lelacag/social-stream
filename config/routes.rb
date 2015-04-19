@@ -12,7 +12,7 @@ SocialStream::Application.routes.draw do
     end
     get 'join', on: :member
     get 'leave', on: :member
-    get 'reports', on: :member
+    # get 'reports', on: :member
   end
 
   # for productionx
@@ -30,7 +30,9 @@ SocialStream::Application.routes.draw do
     get '/', to: 'communities#show', as: :show_community
     get '/edit', to: 'communities#edit', as: :edit_community
     get 'posts/:id', to: 'posts#show', as: :show_post
-    resources :users
+    resources :users, except: :show
+    get '/users', to: 'users#show'
+    get '/reports', to: 'posts#reports'
   end
 
   # http://apidock.com/rails/ActionDispatch/Routing/Mapper/Scoping/constraints

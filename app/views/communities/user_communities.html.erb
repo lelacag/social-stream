@@ -4,7 +4,8 @@
     <% row.each do |community| %>
       <div class="row-bottom">
         <div class="col-md-3 col-sm-3 col-xs-3">
-          <%= link_to community_path(community) do %>
+          <% url = root_url(subdomain: community.subdomain) %>
+          <%= link_to root_url(subdomain: community.subdomain) do %>
             <% if community.image.exists? %>
               <%= image_tag community.image.url(:thumb), size: '190x190' %>
             <% else %>
@@ -12,13 +13,13 @@
             <% end %>
             <div class="pull-right">
               <div class="row">
-                <%= link_to("Settings", edit_community_path(community), id: "community_#{community.id}", class: "btn btn-primary settings-button") %>
+                <%= link_to("Settings", url + edit_community_path, id: "community_#{community.id}", class: "btn btn-primary settings-button") %>
               </div>
               <div class="row">
-                <%= link_to("Users", user_path(community), id: "community_#{community.id}", class: "btn btn-primary users-button") %>
+                <%= link_to("Users", url + users_path, id: "community_#{community.id}", class: "btn btn-primary users-button") %>
               </div>
               <div class="row">
-                <%= link_to("Reports", reports_community_path(community), id: "community_#{community.id}", class: "btn btn-primary reports-button") %>
+                <%= link_to("Reports", url + reports_path, id: "community_#{community.id}", class: "btn btn-primary reports-button") %>
               </div>
             </div>
             <div class="bottom-align">
