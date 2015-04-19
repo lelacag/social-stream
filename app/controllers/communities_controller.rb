@@ -6,8 +6,6 @@ class CommunitiesController < ApplicationController
   # GET /communities
   # GET /communities.json
   def index
-    # @user = User.find(params[:user_id])
-    # @communities = @user.communities
     @communities = Community.all
   end
 
@@ -23,7 +21,6 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/new
   def new
-    # @user = User.find(params[:user_id])
     @community = Community.new
   end
 
@@ -34,14 +31,17 @@ class CommunitiesController < ApplicationController
   # POST /communities
   # POST /communities.json
   def create
-    # @community = Community.new(community_params)
-    subdomain = params[:community][:name].gsub!(" ", "-").downcase if params[:community][:name].present?
+    if params[:community][:name].strip.include? " "
+      subdomain = params[:community][:name].gsub!(" ", "-").downcase
+    else
+      subdomain = params[:community][:name]
+    end
+
     @community = Community.create name: params[:community][:name], owner_id: current_user.id,
                                   image: params[:community][:image], subdomain: subdomain
 
     respond_to do |format|
       if @community.save
-        # format.html { redirect_to community_url(@community), notice: 'Community was successfully created.' }
         format.js   { render js: "window.location.href='" + show_community_path + "'" }
         format.json { render :show, status: :created, location: @community }
       else
