@@ -58,8 +58,12 @@ class PostsController < ApplicationController
   end
 
   def reports
-    community = Community.find_by_subdomain!(request.subdomain)
-    @posts = community.posts.where(report: true)
+    @community = Community.find_by_subdomain!(request.subdomain)
+    if @community.owner_id == current_user.id
+      @posts = @community.posts.where(report: true)
+    else
+      redirect_to root_url
+    end
   end
 
   private
