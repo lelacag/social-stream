@@ -1,0 +1,35 @@
+<div class="row">
+  <%= form_for :message, url: create_contact_us_path do |f| %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="InputName">Your Name</label>
+        <div class="input-group">
+          <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="InputEmail">Your Email</label>
+        <div class="input-group">
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: true %>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-user"></i>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="InputMessage">Message</label>
+        <div class="input-group">
+          <%= f.text_area :subject, class: "form-control", rows: 5, required: true %>
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-envelope"></i>
+          </span>
+        </div>
+      </div>
+      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+    </div>
+  <% end %>
+</div>
+

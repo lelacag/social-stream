@@ -50,4 +50,6 @@ SocialStream::Application.routes.draw do
   get 'page/about_us' => 'home#about_us', as: :about_us
   get 'page/terms' => 'home#terms', as: :terms
   get 'page/privacy' => 'home#privacy', as: :privacy
+
+  post 'page/create_contact_us' => 'messages#create_contact_us', as: :create_contact_us
 end
